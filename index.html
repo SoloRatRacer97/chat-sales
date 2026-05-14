@@ -1,0 +1,4394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ChatSales™ | More Booked Jobs. More Closed Cases. Every Industry.</title>
+<meta name="description" content="ChatSales™ helps home services, legal, dental and senior living teams respond instantly, qualify naturally and win more high-value inbound leads.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,200;14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+<style>
+/* ============================================
+   ChatSales™, Master Stylesheet
+   Brand spec: Inter (opsz 18pt) + brand palette
+   ============================================ */
+
+:root {
+  /* Greens */
+  --green-dark: #3d7840;
+  --green: #40a648;
+  --green-soft: #c5ddc6;
+
+  /* Reds */
+  --red-darkest: #89181c;
+  --red-dark: #a31e22;
+  --red: #c62127;
+
+  /* Neutrals */
+  --gray-light: #e2e2e2;
+  --paper: #f2f2f3;
+  --white: #ffffff;
+  --ink: #1a1a1a;
+  --ink-soft: #4a4a4a;
+  --muted: #6b6b6b;
+  --line: rgba(26, 26, 26, 0.1);
+  --line-strong: rgba(26, 26, 26, 0.2);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+/* ===== BASE: Inter, opsz 18pt. Body = Light 16pt ===== */
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-optical-sizing: auto;
+  font-variation-settings: "opsz" 18;
+  background: var(--white);
+  color: var(--ink);
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== TYPE SCALE per brand spec ===== */
+h1 {
+  font-size: clamp(36px, 5vw, 53px);
+  font-weight: 200;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  margin-bottom: 28px;
+}
+h2 {
+  font-size: clamp(28px, 3.5vw, 37px);
+  font-weight: 300;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  margin-bottom: 24px;
+}
+h3 {
+  font-size: clamp(20px, 2.2vw, 29px);
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  margin-bottom: 12px;
+}
+h4 {
+  font-size: clamp(18px, 1.8vw, 21px);
+  font-weight: 600;
+  line-height: 1.3;
+  margin-bottom: 10px;
+}
+p { font-weight: 300; }
+a { color: inherit; }
+
+ul, ol { padding-left: 1.2em; }
+ul li, ol li { font-weight: 300; margin-bottom: 8px; line-height: 1.55; }
+
+/* Trademark mark inline next to the logo wordmark */
+.tm-mark {
+  font-size: 0.55em;
+  font-weight: 500;
+  vertical-align: super;
+  line-height: 0;
+  margin-left: 2px;
+  letter-spacing: 0;
+}
+
+/* ===== NAV ===== */
+nav.site-nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 14px 32px;
+  background: var(--paper);
+  border-bottom: 1px solid rgba(64,166,72,0.18);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.site-nav .logo {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  color: var(--green);
+  font-weight: 600;
+  font-size: 22px;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+}
+.site-nav .logo .logo-accent { color: var(--green-dark); }
+
+.nav-links {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+}
+.nav-links a {
+  color: var(--green);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s;
+  position: relative;
+}
+.nav-links a:hover,
+.nav-links a.active { color: var(--green-dark); }
+
+/* Industries dropdown */
+.has-dropdown { position: relative; padding-bottom: 14px; margin-bottom: -14px; }
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-8px);
+  background: var(--white);
+  border: 1px solid var(--gray-light);
+  border-radius: 6px;
+  padding: 10px;
+  margin-top: 14px;
+  min-width: 220px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s, transform 0.2s;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+}
+/* Invisible bridge so the mouse can travel from the trigger into the menu
+   without crossing dead space and dropping the hover. */
+.dropdown::before {
+  content: '';
+  position: absolute;
+  top: -14px;
+  left: 0; right: 0;
+  height: 14px;
+}
+.has-dropdown:hover .dropdown,
+.has-dropdown:focus-within .dropdown {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+.dropdown a {
+  display: block;
+  padding: 10px 14px;
+  border-radius: 4px;
+  font-size: 14px;
+  color: var(--green);
+  font-weight: 500;
+}
+.dropdown a:hover { background: rgba(64, 166, 72, 0.12); color: var(--green-dark); }
+
+/* ===== BUTTONS ===== */
+.btn {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  padding: 16px 28px;
+  border-radius: 4px;
+  letter-spacing: 0.005em;
+}
+.btn-primary {
+  background: var(--green);
+  color: var(--white);
+}
+.btn-primary:hover {
+  background: var(--green-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(64, 166, 72, 0.25);
+}
+.btn-red { background: var(--red); color: var(--white); }
+.btn-red:hover {
+  background: var(--red-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(198, 33, 39, 0.25);
+}
+.btn-outline {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--ink);
+}
+.btn-outline:hover { background: var(--red-darkest); color: var(--white); }
+.btn-outline-light {
+  background: transparent;
+  color: var(--white);
+  border: 1px solid rgba(255,255,255,0.4);
+}
+.btn-outline-light:hover {
+  background: var(--white);
+  color: var(--ink);
+  border-color: var(--white);
+}
+.btn-nav {
+  background: var(--green);
+  color: var(--white) !important;
+  padding: 10px 18px;
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 14px;
+}
+.btn-nav:hover { background: var(--green-dark) !important; }
+
+/* ===== LAYOUT ===== */
+main { padding-top: 130px; }
+section { padding: 90px 32px; position: relative; }
+section.tight { padding: 60px 32px; }
+.container { max-width: 1180px; margin: 0 auto; }
+.narrow { max-width: 820px; margin: 0 auto; }
+
+.eyebrow {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--green-dark);
+  margin-bottom: 18px;
+}
+.eyebrow-red { color: var(--red); }
+.eyebrow-light { color: var(--green-soft); }
+
+.section-intro {
+  max-width: 700px;
+  font-size: 17px;
+  font-weight: 300;
+  color: var(--muted);
+  margin-bottom: 48px;
+  line-height: 1.6;
+}
+
+/* ===== HERO ===== */
+.hero {
+  padding: 110px 32px 80px;
+  position: relative;
+  overflow: hidden;
+  background: var(--white);
+}
+.hero-bg { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+.hero-bg::before {
+  content: '';
+  position: absolute;
+  top: -150px; right: -150px;
+  width: 480px; height: 480px;
+  background: radial-gradient(circle, var(--green-soft) 0%, transparent 70%);
+  opacity: 0.55;
+  border-radius: 50%;
+}
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  bottom: -100px; left: -80px;
+  width: 320px; height: 320px;
+  background: radial-gradient(circle, var(--red) 0%, transparent 70%);
+  opacity: 0.04;
+  border-radius: 50%;
+}
+.hero-inner { max-width: 1180px; margin: 0 auto; position: relative; z-index: 1; }
+
+.tag-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--green-soft);
+  color: var(--green-dark);
+  padding: 6px 14px;
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 28px;
+}
+.live-dot {
+  width: 7px; height: 7px;
+  background: var(--green-dark);
+  border-radius: 50%;
+  animation: pulse 1.8s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+h1 .accent { color: var(--green); }
+h1 .accent-red { color: var(--red); }
+h2 .accent { color: var(--green); }
+h2 .accent-red { color: var(--red); }
+
+.hero-sub {
+  font-size: 19px;
+  font-weight: 300;
+  max-width: 660px;
+  color: var(--ink-soft);
+  margin-bottom: 40px;
+  line-height: 1.55;
+}
+.cta-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* ===== TRUST BAR ===== */
+.trust-bar {
+  background: var(--paper);
+  border-top: 1px solid var(--gray-light);
+  border-bottom: 1px solid var(--gray-light);
+  padding: 22px 32px;
+}
+.trust-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 18px;
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+}
+.trust-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.trust-dot {
+  width: 6px; height: 6px;
+  background: var(--green);
+  border-radius: 50%;
+}
+
+/* ===== DARK SECTIONS ===== */
+.dark {
+  background: var(--red-darkest);
+  color: var(--white);
+  /* Center-justified by default: header text and section-intro center inside the container. */
+  text-align: center;
+}
+.dark h2, .dark h3, .dark h4 { color: var(--white); }
+/* Force all accents/eyebrows/sub-copy to pure white inside dark sections. */
+.dark h2 .accent,
+.dark h2 .accent-red,
+.dark h3 .accent,
+.dark h3 .accent-red { color: var(--white); }
+.dark .section-intro {
+  color: var(--white);
+  margin-left: auto;
+  margin-right: auto;
+}
+.dark .eyebrow { color: var(--white); }
+
+/* ===== FEATURE GRID ===== */
+.feature-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+  margin-top: 40px;
+}
+.feature-card {
+  background: var(--white);
+  border: 1px solid var(--gray-light);
+  border-radius: 8px;
+  padding: 32px;
+  transition: all 0.3s;
+}
+.feature-card:hover {
+  border-color: var(--green);
+  transform: translateY(-3px);
+  box-shadow: 0 14px 36px rgba(64, 166, 72, 0.1);
+}
+.feature-card .icon-box {
+  width: 44px; height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--green-soft);
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+.feature-card h3 { font-size: 19px; font-weight: 500; margin-bottom: 10px; }
+.feature-card p { color: var(--muted); font-size: 14px; line-height: 1.6; }
+
+.dark .feature-card {
+  background: rgba(255,255,255,0.03);
+  border-color: rgba(255,255,255,0.08);
+}
+.dark .feature-card:hover {
+  background: rgba(64, 166, 72, 0.05);
+  border-color: var(--green);
+}
+.dark .feature-card { text-align: left; }
+.dark .feature-card p { color: var(--white); }
+
+/* ===== INDUSTRY GRID ===== */
+.industries-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  margin-top: 40px;
+}
+.industry-card {
+  background: var(--white);
+  border: 1px solid var(--gray-light);
+  border-radius: 8px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: var(--ink);
+  transition: all 0.3s;
+}
+.industry-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--green);
+  box-shadow: 0 14px 40px rgba(64, 166, 72, 0.12);
+}
+.industry-card .icon-box {
+  width: 52px; height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--green-soft);
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+.industry-card .tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--green-dark);
+  margin-bottom: 12px;
+  letter-spacing: 0.1em;
+  background: var(--green-soft);
+  padding: 3px 9px;
+  border-radius: 4px;
+  align-self: flex-start;
+}
+.industry-card h3 { font-size: 22px; font-weight: 500; margin-bottom: 8px; }
+.industry-card p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 16px;
+  flex: 1;
+}
+.industry-card .arrow {
+  font-size: 13px;
+  color: var(--green-dark);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+/* ===== STEPS ===== */
+.steps-list { margin-top: 30px; }
+.step {
+  display: flex;
+  gap: 28px;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--line);
+  align-items: flex-start;
+}
+.step:last-child { border-bottom: none; }
+.step-num {
+  font-size: 40px;
+  font-weight: 200;
+  line-height: 1;
+  color: var(--green);
+  flex-shrink: 0;
+  letter-spacing: -0.03em;
+  min-width: 56px;
+}
+.step-content h3 {
+  font-size: 22px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+.step-content p {
+  color: var(--muted);
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+/* ===== BULLET LIST ===== */
+.clean-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 24px;
+}
+.clean-list li {
+  padding: 11px 0;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.5;
+}
+.clean-list li:last-child { border-bottom: none; }
+.clean-list li::before {
+  content: '';
+  width: 6px; height: 6px;
+  background: var(--green);
+  border-radius: 50%;
+  margin-top: 11px;
+  flex-shrink: 0;
+}
+.dark .clean-list li { border-bottom-color: rgba(255,255,255,0.08); color: rgba(255,255,255,0.85); }
+
+/* ===== TWO-COLUMN ===== */
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+.split-tight { gap: 48px; }
+
+/* ===== QUOTE / CALLOUT ===== */
+.callout {
+  background: var(--paper);
+  border-left: 3px solid var(--green);
+  padding: 28px 32px;
+  border-radius: 0 8px 8px 0;
+  margin: 32px 0;
+}
+.callout p {
+  font-size: 18px;
+  line-height: 1.55;
+  color: var(--ink);
+  font-weight: 300;
+}
+.callout-dark {
+  background: rgba(255,255,255,0.04);
+  border-left: 3px solid var(--green);
+  text-align: center;
+}
+.callout-dark p,
+.dark .callout p { color: var(--white); }
+
+/* ===== PRICING ===== */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+  margin-top: 40px;
+}
+.price-card {
+  background: var(--white);
+  border: 1px solid var(--gray-light);
+  border-radius: 8px;
+  padding: 36px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s;
+}
+.price-card:hover { border-color: var(--green); }
+.price-card.featured {
+  background: var(--red-darkest);
+  color: var(--white);
+  border-color: var(--green);
+}
+.price-card.featured h3 { color: var(--white); }
+.featured-badge {
+  position: absolute;
+  top: -12px; left: 50%;
+  transform: translateX(-50%);
+  background: var(--green);
+  color: var(--white);
+  padding: 5px 14px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+}
+.price-name {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: 600;
+  color: var(--green-dark);
+  margin-bottom: 14px;
+}
+.price-card.featured .price-name { color: var(--green-soft); }
+.price-card h3 { font-size: 22px; font-weight: 500; margin-bottom: 12px; }
+.price-card p {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 24px;
+  line-height: 1.55;
+  flex: 1;
+}
+.price-card.featured p { color: rgba(255,255,255,0.7); }
+.price-card .btn { width: 100%; justify-content: center; padding: 12px; font-size: 14px; }
+.price-card .btn-outline {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--ink);
+}
+.price-card.featured .btn-outline {
+  color: var(--white);
+  border-color: rgba(255,255,255,0.4);
+}
+.price-card.featured .btn-outline:hover {
+  background: var(--white);
+  color: var(--ink);
+  border-color: var(--white);
+}
+
+/* ===== FAQ ===== */
+.faq-list { max-width: 780px; margin: 0 auto; }
+.faq-item {
+  border-top: 1px solid var(--line);
+  padding: 22px 0;
+  cursor: pointer;
+}
+.faq-item:last-child { border-bottom: 1px solid var(--line); }
+.faq-q {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 17px;
+  font-weight: 500;
+  gap: 24px;
+}
+.faq-toggle {
+  width: 28px; height: 28px;
+  border: 1px solid var(--ink);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s;
+  font-size: 16px;
+  font-weight: 300;
+}
+.faq-item.open .faq-toggle {
+  background: var(--green);
+  border-color: var(--green);
+  color: var(--white);
+  transform: rotate(45deg);
+}
+.faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.6;
+  font-weight: 300;
+}
+.faq-item.open .faq-a {
+  max-height: 600px;
+  padding-top: 14px;
+}
+
+/* ===== RESOURCE CLUSTERS ===== */
+.resource-cluster {
+  background: var(--paper);
+  border-radius: 8px;
+  padding: 36px;
+  margin-bottom: 20px;
+}
+.resource-cluster h3 {
+  font-size: 22px;
+  font-weight: 500;
+  margin-bottom: 18px;
+  color: var(--green-dark);
+}
+.resource-cluster ul {
+  list-style: none;
+  padding: 0;
+}
+.resource-cluster li {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 15px;
+  font-weight: 300;
+}
+.resource-cluster li:last-child { border-bottom: none; }
+.resource-cluster a {
+  text-decoration: none;
+  color: var(--ink);
+  transition: color 0.2s;
+}
+.resource-cluster a:hover { color: var(--green-dark); }
+
+/* ===== FORM ===== */
+.demo-form {
+  background: var(--paper);
+  border-radius: 8px;
+  padding: 40px;
+}
+.demo-form label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: var(--ink);
+}
+.demo-form input,
+.demo-form select,
+.demo-form textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--gray-light);
+  border-radius: 4px;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  background: var(--white);
+  color: var(--ink);
+  margin-bottom: 18px;
+  transition: border-color 0.2s;
+}
+.demo-form input:focus,
+.demo-form select:focus,
+.demo-form textarea:focus {
+  outline: none;
+  border-color: var(--green);
+}
+.demo-form textarea { min-height: 100px; resize: vertical; }
+.demo-form .btn { width: 100%; justify-content: center; }
+
+/* ===== FINAL CTA SECTION ===== */
+.final-cta {
+  background: var(--red-darkest);
+  color: var(--white);
+  text-align: center;
+  padding: 100px 32px;
+  position: relative;
+  overflow: hidden;
+}
+.final-cta::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, var(--green) 0%, transparent 60%);
+  opacity: 0.12;
+  border-radius: 50%;
+}
+.final-cta h2 {
+  max-width: 760px;
+  margin: 0 auto 24px;
+  color: var(--white);
+  position: relative;
+}
+.final-cta h2 .accent { color: var(--green); }
+.final-cta p {
+  font-size: 17px;
+  color: rgba(255,255,255,0.7);
+  max-width: 560px;
+  margin: 0 auto 32px;
+  position: relative;
+  font-weight: 300;
+}
+.final-cta .cta-row {
+  justify-content: center;
+  position: relative;
+}
+
+/* ===== FOOTER ===== */
+footer.site-footer {
+  background: var(--paper);
+  color: var(--green);
+  padding: 56px 32px 28px;
+}
+.footer-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 40px;
+  padding-bottom: 36px;
+  border-bottom: 1px solid rgba(64,166,72,0.18);
+}
+.site-footer .logo {
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--green);
+  text-decoration: none;
+  margin-bottom: 18px;
+  display: inline-block;
+}
+.site-footer .logo .logo-accent { color: var(--green-dark); }
+.site-footer .footer-tag {
+  color: var(--green);
+  font-size: 13px;
+  max-width: 320px;
+  font-weight: 300;
+  line-height: 1.6;
+  opacity: 0.85;
+}
+.footer-col h4 {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 14px;
+  color: var(--green);
+  font-weight: 600;
+  opacity: 0.75;
+}
+.footer-col a {
+  display: block;
+  color: var(--green);
+  text-decoration: none;
+  font-size: 14px;
+  margin-bottom: 8px;
+  font-weight: 400;
+  transition: color 0.2s;
+}
+.footer-col a:hover { color: var(--green-dark); }
+.footer-bottom {
+  max-width: 1180px;
+  margin: 28px auto 0;
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--green);
+  font-weight: 300;
+  flex-wrap: wrap;
+  gap: 12px;
+  opacity: 0.75;
+}
+
+/* ===== PAGE HEADERS (interior pages) ===== */
+.page-header {
+  background: var(--white);
+  padding: 100px 32px 60px;
+  position: relative;
+  overflow: hidden;
+}
+.page-header.dark { background: var(--red-darkest); }
+.page-header-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.page-header-bg::before {
+  content: '';
+  position: absolute;
+  top: -100px; right: -100px;
+  width: 360px; height: 360px;
+  background: radial-gradient(circle, var(--green-soft) 0%, transparent 70%);
+  opacity: 0.5;
+  border-radius: 50%;
+}
+
+/* ===== FAQ search + categories ===== */
+.faq-controls {
+  max-width: 780px;
+  margin: 0 auto 36px;
+}
+.faq-search-wrap { position: relative; margin-bottom: 18px; }
+#faq-search {
+  width: 100%;
+  padding: 14px 18px 14px 44px;
+  border: 1px solid var(--gray-light);
+  border-radius: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  background: var(--white) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236b6b6b' stroke-width='2'><circle cx='11' cy='11' r='7'/><line x1='21' y1='21' x2='16.65' y2='16.65'/></svg>") no-repeat 16px center;
+  outline: none;
+  transition: border-color 0.2s;
+}
+#faq-search:focus { border-color: var(--green); }
+.faq-categories {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.faq-cat {
+  background: transparent;
+  border: 1px solid var(--gray-light);
+  color: var(--muted);
+  padding: 8px 14px;
+  border-radius: 100px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.faq-cat:hover { border-color: var(--green); color: var(--green-dark); }
+.faq-cat.active {
+  background: var(--red-darkest);
+  color: var(--white);
+  border-color: var(--ink);
+}
+.faq-item.hidden { display: none; }
+.faq-empty {
+  max-width: 780px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+/* ===== TOOLS PAGE, Shared ===== */
+.tool-header {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  margin-bottom: 40px;
+}
+.tool-num {
+  font-size: 36px;
+  font-weight: 200;
+  color: var(--green);
+  letter-spacing: -0.04em;
+  background: var(--white);
+  border: 1px solid var(--gray-light);
+  border-radius: 8px;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.tool-header h2 { margin-bottom: 12px; }
+.tool-header .section-intro { margin-bottom: 0; }
+
+/* === SPA === */
+.page-section { display: none; }
+.page-section.active { display: block; animation: pageFade 0.3s ease-out; }
+@keyframes pageFade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+/* === JOURNEY STRIP === */
+.journey-strip {
+  position: fixed;
+  top: 68px;
+  left: 0; right: 0;
+  z-index: 99;
+  background: var(--white);
+  border-bottom: 1px solid var(--gray-light);
+  padding: 12px 32px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.journey-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  overflow-x: auto;
+}
+.journey-step {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: var(--muted);
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+.journey-step:hover {
+  color: var(--green-dark);
+  background: var(--paper);
+}
+.journey-num {
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  background: var(--gray-light);
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+.journey-label {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+}
+.journey-step.active { color: var(--green-dark); }
+.journey-step.active .journey-num {
+  background: var(--green);
+  color: var(--white);
+  box-shadow: 0 0 0 4px rgba(64, 166, 72, 0.18);
+}
+.journey-step.completed .journey-num {
+  background: var(--green-soft);
+  color: var(--green-dark);
+}
+.journey-divider {
+  flex: 1;
+  height: 2px;
+  background: var(--gray-light);
+  max-width: 80px;
+  border-radius: 100px;
+}
+@media (max-width: 900px) {
+  .journey-strip { padding: 10px 16px; }
+  .journey-label { display: none; }
+  .journey-divider { max-width: 40px; }
+}
+
+/* === MONEY / CALCULATOR SECTION === */
+.money-section {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2a3a2a 50%, #3d7840 100%);
+  color: var(--white);
+  padding: 80px 32px 100px;
+  position: relative;
+  overflow: hidden;
+}
+.money-bg-orb-a {
+  position: absolute;
+  top: -200px; right: -100px;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, var(--green) 0%, transparent 60%);
+  opacity: 0.4;
+  border-radius: 50%;
+  animation: orbFloat 12s ease-in-out infinite;
+}
+.money-bg-orb-b {
+  position: absolute;
+  bottom: -150px; left: -100px;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, var(--red) 0%, transparent 70%);
+  opacity: 0.15;
+  border-radius: 50%;
+  animation: orbFloat 15s ease-in-out infinite 3s;
+}
+@keyframes orbFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(30px, -20px) scale(1.05); }
+}
+.money-section .container { position: relative; z-index: 1; }
+.money-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: var(--green-soft);
+  padding: 8px 16px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  margin-bottom: 24px;
+}
+.money-pulse {
+  width: 8px; height: 8px;
+  background: #4ade80;
+  border-radius: 50%;
+  box-shadow: 0 0 12px #4ade80;
+  animation: pulse 1.5s infinite;
+}
+.money-headline {
+  font-size: clamp(32px, 5vw, 52px);
+  font-weight: 200;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  margin-bottom: 16px;
+  color: var(--white);
+}
+.money-accent { color: #ffb800; }
+.money-sub {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: 36px;
+  font-weight: 300;
+  max-width: 640px;
+}
+.money-tabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+.money-tab {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--white);
+  padding: 11px 20px;
+  border-radius: 100px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.money-tab:hover { background: rgba(255, 255, 255, 0.15); transform: translateY(-1px); }
+.money-tab.active {
+  background: var(--white);
+  color: var(--green-dark);
+  border-color: var(--white);
+}
+.money-card {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  padding: 36px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+}
+.money-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+.money-slider-row { margin-bottom: 22px; }
+.money-slider-row:last-child { margin-bottom: 0; }
+.money-slider-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 17px;
+  color: var(--white);
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+.money-slider-val {
+  font-size: 28px;
+  font-weight: 500;
+  color: #ffb800;
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+}
+.money-slider {
+  width: 100%;
+  -webkit-appearance: none;
+  appearance: none;
+  background: rgba(255, 255, 255, 0.15);
+  height: 6px;
+  border-radius: 100px;
+  cursor: pointer;
+  outline: none;
+}
+.money-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  background: #ffb800;
+  border: 3px solid var(--white);
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(255, 184, 0, 0.4);
+}
+.money-slider::-moz-range-thumb {
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  background: #ffb800;
+  border: 3px solid var(--white);
+  cursor: pointer;
+}
+.money-output { text-align: center; padding: 16px; }
+.money-output-label {
+  font-size: 22px;
+  font-weight: 500;
+  color: #ffb800;
+  margin-bottom: 16px;
+  line-height: 1.3;
+}
+.money-big {
+  font-size: clamp(56px, 9vw, 104px);
+  font-weight: 200;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: var(--white);
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 0 40px rgba(255, 184, 0, 0.3);
+  transition: transform 0.15s;
+}
+.money-big.bump { transform: scale(1.04); }
+.money-period {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 4px;
+  font-weight: 300;
+}
+.money-breakdown {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 28px 0;
+  padding: 20px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+.money-bd-label {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+.money-bd-val {
+  font-size: 28px;
+  font-weight: 300;
+  color: var(--white);
+  font-variant-numeric: tabular-nums;
+}
+.money-impact {
+  background: rgba(229, 57, 53, 0.12);
+  border-left: 3px solid var(--red);
+  padding: 12px 16px;
+  border-radius: 0 6px 6px 0;
+  text-align: left;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 300;
+  margin-bottom: 24px;
+}
+.money-impact-emphasis { color: #ffb800; font-weight: 500; }
+.money-btn {
+  background: #ffb800;
+  color: var(--ink);
+  width: 100%;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 15px;
+  padding: 16px;
+  box-shadow: 0 10px 30px rgba(255, 184, 0, 0.3);
+}
+.money-btn:hover {
+  background: #fbbf24;
+  transform: translateY(-2px);
+  box-shadow: 0 14px 40px rgba(255, 184, 0, 0.4);
+}
+.money-disclaimer {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+  text-align: center;
+  margin-top: 20px;
+  font-weight: 300;
+}
+
+/* ============================================
+   VIDEO SHOWCASE SECTION (home, between hero and calculator)
+   ============================================ */
+.video-section {
+  background: var(--paper);
+  padding: 70px 32px 80px;
+}
+.video-section .container {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 48px;
+  align-items: center;
+}
+.video-copy .eyebrow { margin-bottom: 14px; }
+.video-copy h2 { margin-bottom: 16px; }
+.video-copy p {
+  font-size: 17px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 24px;
+  font-weight: 300;
+}
+.video-stats {
+  display: flex;
+  gap: 28px;
+  margin-bottom: 28px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+}
+.video-stat-num {
+  font-size: 28px;
+  font-weight: 300;
+  color: var(--green-dark);
+  letter-spacing: -0.02em;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.video-stat-label {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 4px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+.video-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 14px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #1c1c1e 0%, #2a3a2a 60%, var(--green-dark) 100%);
+  cursor: pointer;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.18);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.video-frame:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 30px 70px rgba(0,0,0,0.25);
+}
+.video-frame iframe,
+.video-frame video {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  border: 0;
+  display: block;
+}
+/* Decorative pattern grid in the placeholder */
+.video-frame::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(64,166,72,0.35) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(255,255,255,0.06) 0%, transparent 50%);
+  pointer-events: none;
+}
+.video-play {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 88px; height: 88px;
+  background: var(--white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 12px 36px rgba(0,0,0,0.35);
+  transition: all 0.2s;
+  z-index: 2;
+}
+.video-frame:hover .video-play {
+  transform: translate(-50%, -50%) scale(1.06);
+  background: var(--green-soft);
+}
+.video-play::before {
+  content: '';
+  display: block;
+  width: 0; height: 0;
+  border-top: 14px solid transparent;
+  border-bottom: 14px solid transparent;
+  border-left: 22px solid var(--green-dark);
+  margin-left: 6px;
+}
+.video-frame-label {
+  position: absolute;
+  bottom: 18px;
+  left: 22px;
+  color: var(--white);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.video-frame-label::before {
+  content: '';
+  width: 8px; height: 8px;
+  background: #ef4444;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 0 3px rgba(239,68,68,0.25);
+}
+.video-frame-time {
+  position: absolute;
+  bottom: 18px;
+  right: 22px;
+  color: var(--white);
+  background: rgba(0,0,0,0.5);
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  z-index: 2;
+}
+
+@media (max-width: 900px) {
+  .video-section .container { grid-template-columns: 1fr; gap: 36px; }
+  .video-section { padding: 50px 20px 60px; }
+  .video-play { width: 64px; height: 64px; }
+  .video-play::before { border-top-width: 10px; border-bottom-width: 10px; border-left-width: 16px; }
+}
+
+/* ============================================
+   MID-PAGE CTA BLOCK (sprinkled throughout site)
+   ============================================ */
+.mid-cta {
+  background: linear-gradient(135deg, var(--green-dark) 0%, var(--green) 100%);
+  color: var(--white);
+  border-radius: 12px;
+  padding: 36px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 28px;
+  max-width: 1100px;
+  margin: 60px auto;
+  box-shadow: 0 16px 40px rgba(64, 166, 72, 0.22);
+}
+.mid-cta-text { flex: 1; }
+.mid-cta-title {
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.3;
+  margin-bottom: 6px;
+  letter-spacing: -0.01em;
+}
+.mid-cta-sub {
+  font-size: 15px;
+  color: rgba(255,255,255,0.85);
+  font-weight: 300;
+  line-height: 1.5;
+}
+.mid-cta .btn-row {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+}
+.mid-cta .btn-white {
+  background: var(--white);
+  color: var(--green-dark);
+  padding: 14px 24px;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s;
+  display: inline-block;
+}
+.mid-cta .btn-white:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+}
+.mid-cta .btn-ghost {
+  background: transparent;
+  color: var(--white);
+  padding: 14px 24px;
+  border: 1px solid rgba(255,255,255,0.5);
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s;
+  display: inline-block;
+}
+.mid-cta .btn-ghost:hover {
+  background: rgba(255,255,255,0.12);
+  border-color: var(--white);
+}
+@media (max-width: 750px) {
+  .mid-cta { flex-direction: column; align-items: flex-start; padding: 28px; gap: 18px; }
+  .mid-cta-title { font-size: 20px; }
+  .mid-cta .btn-row { width: 100%; }
+  .mid-cta .btn-white, .mid-cta .btn-ghost { flex: 1; text-align: center; }
+}
+
+/* ============================================
+   FLOATING DEMO PILL (persistent CTA, bottom-right)
+   ============================================ */
+.demo-pill {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 90;
+  background: var(--green);
+  color: var(--white);
+  padding: 14px 22px;
+  border-radius: 100px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 12px 30px rgba(64,166,72,0.4);
+  transition: all 0.2s;
+  letter-spacing: 0.005em;
+}
+.demo-pill:hover {
+  background: var(--green-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 16px 36px rgba(64,166,72,0.5);
+}
+.demo-pill .demo-pill-dot {
+  width: 8px; height: 8px;
+  background: #4ade80;
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px rgba(74, 222, 128, 0.3);
+  animation: pulse 1.8s infinite;
+}
+@media (max-width: 600px) {
+  .demo-pill { bottom: 16px; right: 16px; padding: 11px 16px; font-size: 13px; }
+}
+
+/* ============================================
+   TESTIMONIAL CARDS (sprinkled throughout)
+   ============================================ */
+.testimonial {
+  background: var(--white);
+  border: 1px solid var(--gray-light);
+  border-left: 3px solid var(--green);
+  border-radius: 0 10px 10px 0;
+  padding: 26px 30px;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  max-width: 900px;
+  margin: 0 auto;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+.testimonial-quote-mark {
+  font-size: 44px;
+  line-height: 0.8;
+  color: var(--green);
+  font-family: Georgia, serif;
+  flex-shrink: 0;
+  margin-top: 8px;
+}
+.testimonial-body { flex: 1; }
+.testimonial-quote {
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--ink);
+  font-weight: 400;
+  margin-bottom: 14px;
+  letter-spacing: -0.005em;
+}
+.testimonial-attr {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.testimonial-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.testimonial-role {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+}
+.testimonial-result {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+  background: var(--green-soft);
+  color: var(--green-dark);
+  padding: 4px 12px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  align-self: flex-start;
+}
+
+/* Dark-section variant */
+.dark .testimonial,
+.testimonial.dark {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.08);
+  border-left-color: var(--green);
+}
+.dark .testimonial .testimonial-quote,
+.testimonial.dark .testimonial-quote { color: var(--white); }
+.dark .testimonial .testimonial-name,
+.testimonial.dark .testimonial-name { color: var(--white); }
+.dark .testimonial .testimonial-role,
+.testimonial.dark .testimonial-role { color: rgba(255,255,255,0.6); }
+
+/* Paper-section variant, already looks good, slight tweak */
+.testimonial.on-paper { background: var(--white); }
+
+/* Compact inline testimonial, for placing inside other sections */
+.testimonial-strip {
+  padding: 40px 32px;
+  background: var(--paper);
+}
+.testimonial-strip .testimonial { background: var(--white); }
+
+@media (max-width: 600px) {
+  .testimonial { flex-direction: column; padding: 22px 22px; gap: 4px; }
+  .testimonial-quote-mark { font-size: 32px; }
+  .testimonial-quote { font-size: 16px; }
+}
+
+/* ============================================
+   FLOW CHART (How It Works, 6-step pipeline)
+   ============================================ */
+.flow-chart {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0;
+  margin-top: 40px;
+  position: relative;
+}
+.flow-node {
+  background: var(--white);
+  border: 1px solid var(--gray-light);
+  border-radius: 10px;
+  padding: 22px 18px 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: all 0.2s;
+}
+.flow-node:hover {
+  border-color: var(--green);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(64, 166, 72, 0.12);
+}
+.flow-node-num {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--green-dark);
+  background: var(--green-soft);
+  padding: 3px 10px;
+  border-radius: 100px;
+  margin-bottom: 14px;
+}
+.flow-node-icon {
+  font-size: 28px;
+  line-height: 1;
+  margin-bottom: 12px;
+}
+.flow-node-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 6px;
+  line-height: 1.25;
+}
+.flow-node-desc {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* Arrow connectors between nodes, sit BETWEEN grid cells */
+.flow-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  min-width: 28px;
+}
+.flow-arrow::before {
+  content: '';
+  position: absolute;
+  left: 0; right: 8px;
+  top: 50%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, var(--green) 30%, var(--green) 100%);
+  transform: translateY(-50%);
+}
+.flow-arrow::after {
+  content: '';
+  position: absolute;
+  right: 2px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0; height: 0;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-left: 8px solid var(--green);
+}
+
+/* End-of-row "exit" badge under the last node to hint at the outcome */
+.flow-outcome {
+  margin-top: 36px;
+  background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%);
+  color: var(--white);
+  border-radius: 10px;
+  padding: 22px 28px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  box-shadow: 0 12px 30px rgba(64, 166, 72, 0.22);
+}
+.flow-outcome-icon {
+  font-size: 30px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.flow-outcome-text {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+.flow-outcome-text strong { font-weight: 600; }
+
+/* Responsive, wrap to 3-col grid then 1-col */
+@media (max-width: 1100px) {
+  .flow-chart {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+  .flow-arrow { display: none; }
+  .flow-node { padding: 20px 16px; }
+}
+@media (max-width: 640px) {
+  .flow-chart {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .flow-node { padding: 18px; }
+  .flow-node-num { margin-bottom: 10px; }
+  .flow-outcome { flex-direction: column; align-items: flex-start; text-align: left; padding: 20px; }
+}
+
+/* ============================================
+   TOOL BANNER, full-width centered header with bg image.
+   Replaces the old numbered "01" / "02" badge layout.
+   To swap the placeholder for a real image, set:
+     background-image: linear-gradient(...), url('/img/your-image.jpg');
+   ============================================ */
+.tool-banner {
+  position: relative;
+  margin-bottom: 36px;
+  padding: 84px 32px;
+  border-radius: 14px;
+  overflow: hidden;
+  text-align: center;
+  color: var(--white);
+  background-color: #1a3a25;
+  background-image:
+    radial-gradient(circle at 22% 28%, rgba(64,166,72,0.42) 0%, transparent 42%),
+    radial-gradient(circle at 78% 72%, rgba(137,24,28,0.28) 0%, transparent 48%),
+    linear-gradient(135deg, #14281c 0%, #3d7840 100%);
+  background-size: cover;
+  background-position: center;
+  isolation: isolate;
+}
+.tool-banner::after {
+  content: 'PLACEHOLDER, drop image here';
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  color: rgba(255,255,255,0.35);
+  font-weight: 600;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+.tool-banner .tool-eyebrow {
+  color: var(--green-soft);
+  margin-bottom: 14px;
+  display: inline-block;
+}
+.tool-banner .tool-heading {
+  color: var(--white);
+  margin-bottom: 14px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.tool-banner .tool-heading .accent { color: var(--green-soft); }
+.tool-banner .tool-sub {
+  color: rgba(255,255,255,0.85);
+  max-width: 720px;
+  margin: 0 auto;
+}
+@media (max-width: 700px) {
+  .tool-banner { padding: 56px 20px; border-radius: 10px; }
+  .tool-banner::after { font-size: 8px; right: 10px; top: 10px; }
+}
+
+/* ============================================
+   BENCHMARK BAR (Response Time Benchmark)
+   ============================================ */
+.bench-controls-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+.bench-controls-row label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink);
+}
+.bench-input-group { display: flex; gap: 8px; align-items: center; }
+#bench-input {
+  width: 100px;
+  padding: 10px 12px;
+  border: 1px solid var(--gray-light);
+  border-radius: 6px;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
+  background: var(--white);
+  color: var(--ink);
+}
+#bench-input:focus { outline: none; border-color: var(--green); }
+#bench-unit {
+  padding: 10px 12px;
+  border: 1px solid var(--gray-light);
+  border-radius: 6px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  background: var(--white);
+  color: var(--ink);
+}
+
+.bench-scale { margin: 28px 0 12px; position: relative; padding-top: 6px; }
+.bench-bar {
+  position: relative;
+  height: 42px;
+  background: var(--gray-light);
+  border-radius: 6px;
+  overflow: hidden;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
+}
+.bench-bar:active { cursor: grabbing; }
+.bench-bar.is-dragging { cursor: grabbing; }
+.bench-bar.is-dragging .bench-marker { transition: none; }
+.bench-hint {
+  text-align: center;
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 8px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  pointer-events: none;
+}
+.bench-hint::before {
+  content: '⇆ ';
+  color: var(--green-dark);
+  font-weight: 600;
+}
+.bench-zone {
+  position: absolute;
+  top: 0; bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.bench-zone.z-top    { background: var(--green); color: var(--white); }
+.bench-zone.z-avg    { background: var(--green-soft); color: var(--green-dark); }
+.bench-zone.z-bottom { background: rgba(198, 33, 39, 0.92); color: var(--white); }
+.bench-zone span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 8px;
+}
+.bench-marker {
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 0;
+  transition: left 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 10;
+  pointer-events: none;
+}
+.bench-marker::before {
+  content: '';
+  position: absolute;
+  top: 6px;
+  bottom: -6px;
+  left: -1.5px;
+  width: 3px;
+  background: var(--ink);
+  border-radius: 100px;
+}
+.bench-marker-pin {
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 18px; height: 18px;
+  background: var(--ink);
+  border-radius: 50%;
+  border: 3px solid var(--white);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.bench-bar:hover .bench-marker-pin { transform: translateX(-50%) scale(1.1); box-shadow: 0 4px 10px rgba(0,0,0,0.4); }
+.bench-bar.is-dragging .bench-marker-pin { transform: translateX(-50%) scale(1.2); box-shadow: 0 6px 14px rgba(0,0,0,0.5); }
+.bench-axis {
+  position: relative;
+  height: 22px;
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 500;
+}
+.bench-axis span {
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+.bench-axis span:first-child { transform: translateX(0); }
+.bench-axis span:last-child  { transform: translateX(-100%); }
+
+.bench-readout {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+.bench-stat-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+  font-weight: 600;
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+.bench-stat-val {
+  font-size: 28px;
+  font-weight: 300;
+  color: var(--ink);
+  letter-spacing: -0.015em;
+  line-height: 1.1;
+}
+.bench-verdict {
+  margin-top: 24px;
+  padding: 18px 22px;
+  background: var(--white);
+  border-left: 3px solid var(--green);
+  border-radius: 0 6px 6px 0;
+  font-size: 15px;
+  color: var(--ink-soft);
+  line-height: 1.6;
+  font-weight: 300;
+}
+.bench-verdict.bench-bad { border-left-color: var(--red); }
+
+@media (max-width: 700px) {
+  .bench-readout { grid-template-columns: 1fr; gap: 18px; }
+  .bench-zone { font-size: 10px; letter-spacing: 0.04em; }
+}
+
+/* ============================================
+   TOOL, CLEAN LIGHT STYLE (Calculator + Justified Value)
+   Shared design system for both on-site tools.
+   ============================================ */
+.tool-section {
+  background: var(--paper);
+  padding: 90px 32px;
+  position: relative;
+}
+.tool-eyebrow {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--green-dark);
+  margin-bottom: 14px;
+}
+.tool-heading {
+  font-size: clamp(28px, 3.4vw, 36px);
+  font-weight: 300;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  margin-bottom: 12px;
+  color: var(--ink);
+}
+.tool-heading .accent { color: var(--green); }
+.tool-sub {
+  font-size: 16px;
+  color: var(--muted);
+  max-width: 640px;
+  line-height: 1.6;
+  margin-bottom: 36px;
+  font-weight: 300;
+}
+.tool-card {
+  background: var(--white);
+  border: 1px solid var(--gray-light);
+  border-radius: 12px;
+  padding: 36px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+.tool-tabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 22px;
+}
+.tool-tab {
+  background: var(--white);
+  border: 1px solid var(--gray-light);
+  color: var(--ink-soft);
+  padding: 9px 18px;
+  border-radius: 100px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.tool-tab:hover { border-color: var(--green); color: var(--green-dark); }
+.tool-tab.active {
+  background: var(--red-darkest);
+  color: var(--white);
+  border-color: var(--ink);
+}
+
+/* Inputs row across the top */
+.tool-inputs-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 18px;
+  margin-bottom: 28px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--line);
+}
+.tool-inputs-row.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+.tool-input label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink-soft);
+  margin-bottom: 8px;
+  letter-spacing: 0.01em;
+  /* Force every label to a single line, so all field bottoms align in the row. */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-height: 18px;
+  line-height: 18px;
+}
+/* Every form control inside a tool-input is exactly 48px tall so the
+   bottoms of all 3 (or 4) fields in a row line up perfectly. */
+.tool-input input,
+.tool-input select,
+.tool-input .tool-money-input,
+.tool-input .tool-pct-input {
+  width: 100%;
+  height: 48px;
+  box-sizing: border-box;
+  border: 1px solid var(--gray-light);
+  border-radius: 6px;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  background: var(--white);
+  color: var(--ink);
+  transition: border-color 0.2s;
+}
+.tool-input input,
+.tool-input select { padding: 0 14px; }
+.tool-input input:focus,
+.tool-input select:focus { outline: none; border-color: var(--green); }
+.tool-money-input,
+.tool-pct-input {
+  display: flex;
+  align-items: stretch;
+  overflow: hidden;
+  padding: 0;
+}
+.tool-money-input span,
+.tool-pct-input span {
+  background: var(--paper);
+  padding: 0 14px;
+  font-weight: 500;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+}
+.tool-money-input input,
+.tool-pct-input input { border: none; border-radius: 0; height: 100%; }
+.tool-pct-input input { text-align: left; }
+
+/* Result split (green card on left, bars on right) */
+.tool-result {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 36px;
+  align-items: center;
+}
+.tool-result-card {
+  background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%);
+  color: var(--white);
+  border-radius: 14px;
+  padding: 32px 28px;
+  text-align: center;
+  box-shadow: 0 12px 36px rgba(64, 166, 72, 0.28);
+}
+.tool-result-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 14px;
+}
+.tool-result-big {
+  font-size: clamp(56px, 9vw, 96px);
+  font-weight: 200;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
+  transition: transform 0.15s;
+}
+.tool-result-big.bump { transform: scale(1.04); }
+.tool-result-sub {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+  margin-top: 10px;
+  font-weight: 300;
+}
+
+/* Bars */
+.tool-bars { display: flex; flex-direction: column; gap: 18px; }
+.tool-bar-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: var(--ink-soft);
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+.tool-bar-val {
+  font-weight: 600;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+.tool-bar-track {
+  height: 12px;
+  background: var(--paper);
+  border-radius: 100px;
+  overflow: hidden;
+}
+.tool-bar-fill {
+  height: 100%;
+  border-radius: 100px;
+  transition: width 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.tool-bar-fill.red    { background: var(--red); }
+.tool-bar-fill.green  { background: var(--green); }
+.tool-bar-fill.amber  { background: #f59e0b; }
+.tool-net {
+  margin-top: 4px;
+  padding-top: 16px;
+  border-top: 1px dashed var(--gray-light);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 14px;
+  color: var(--ink-soft);
+  font-weight: 500;
+}
+.tool-net-val {
+  font-size: 28px;
+  font-weight: 300;
+  color: var(--green-dark);
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+}
+.tool-disclaimer {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 22px;
+  font-weight: 300;
+}
+
+@media (max-width: 900px) {
+  .tool-section { padding: 60px 20px; }
+  .tool-card { padding: 24px; }
+  .tool-inputs-row, .tool-inputs-row.cols-3 { grid-template-columns: 1fr; gap: 14px; padding-bottom: 22px; margin-bottom: 22px; }
+  .tool-result { grid-template-columns: 1fr; gap: 24px; }
+}
+
+/* ============================================
+   CONVERSATION SIMULATOR
+   ============================================ */
+.sim-instructions {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 24px 0 40px;
+  padding: 18px 24px;
+  background: var(--white);
+  border-radius: 10px;
+  border: 1px solid var(--gray-light);
+}
+.sim-step { display: flex; align-items: center; gap: 12px; }
+.sim-step-num {
+  width: 32px; height: 32px;
+  background: var(--green);
+  color: var(--white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 15px;
+}
+.sim-step-text { font-size: 15px; font-weight: 500; color: var(--ink); }
+.sim-scenarios-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--muted);
+  margin-bottom: 12px;
+  padding-left: 4px;
+}
+.sim-wrap { display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; align-items: start; }
+.sim-scenarios { display: flex; flex-direction: column; gap: 12px; }
+.sim-scenario {
+  background: var(--white);
+  border: 1px solid var(--gray-light);
+  border-radius: 8px;
+  padding: 18px 20px;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'Inter', sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.sim-scenario:hover { border-color: var(--green); }
+.sim-scenario.active {
+  border-color: var(--green);
+  background: var(--green-soft);
+  box-shadow: 0 4px 12px rgba(64, 166, 72, 0.18);
+}
+.sim-scenario .sim-icon { font-size: 22px; flex-shrink: 0; }
+.sim-scenario .sim-name { font-weight: 600; font-size: 16px; color: var(--ink); }
+.sim-scenario .sim-hint { font-size: 13px; color: var(--muted); margin-top: 3px; }
+.sim-scenario.active .sim-hint { color: var(--green-dark); }
+.sim-phone {
+  background: linear-gradient(135deg, #1c1c1e 0%, #2c2c2e 100%);
+  border-radius: 24px;
+  padding: 20px 14px 16px;
+  max-width: 420px;
+  margin: 0 auto;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.2);
+  width: 100%;
+}
+.sim-phone-header { display: flex; align-items: center; gap: 10px; padding: 8px 4px 14px; border-bottom: 0.5px solid rgba(255,255,255,0.15); color: var(--white); }
+.sim-avatar {
+  width: 38px; height: 38px;
+  background: linear-gradient(135deg, var(--green), var(--green-dark));
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 600; font-size: 13px; color: var(--white);
+}
+.sim-phone-name { font-size: 13px; font-weight: 400; }
+.sim-phone-status { font-size: 11px; color: rgba(255,255,255,0.5); font-weight: 300; }
+.sim-body {
+  padding: 14px 6px; min-height: 320px; max-height: 380px;
+  overflow-y: auto; display: flex; flex-direction: column; gap: 7px;
+}
+.sim-body::-webkit-scrollbar { width: 4px; }
+.sim-body::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 4px; }
+.sim-timestamp { text-align: center; font-size: 10px; color: rgba(255,255,255,0.4); margin: 4px 0 8px; }
+.sim-bubble {
+  max-width: 78%; padding: 9px 13px; font-size: 14px; line-height: 1.4;
+  border-radius: 18px; animation: bubbleIn 0.25s ease-out;
+}
+@keyframes bubbleIn { from { opacity: 0; transform: translateY(6px) scale(0.96); } to { opacity: 1; transform: translateY(0) scale(1); } }
+.sim-bubble.us { background: linear-gradient(135deg, #0a84ff, #0066cc); color: var(--white); align-self: flex-end; border-bottom-right-radius: 4px; }
+.sim-bubble.them { background: #3a3a3c; color: var(--white); align-self: flex-start; border-bottom-left-radius: 4px; }
+.sim-bubble.typing { background: #3a3a3c; color: rgba(255,255,255,0.6); align-self: flex-start; padding: 12px 16px; }
+.sim-bubble.typing span { display: inline-block; width: 6px; height: 6px; background: rgba(255,255,255,0.5); border-radius: 50%; margin-right: 3px; animation: typingDot 1.2s infinite; }
+.sim-bubble.typing span:nth-child(2) { animation-delay: 0.15s; }
+.sim-bubble.typing span:nth-child(3) { animation-delay: 0.3s; margin-right: 0; }
+@keyframes typingDot { 0%, 60%, 100% { transform: translateY(0); opacity: 0.4; } 30% { transform: translateY(-3px); opacity: 1; } }
+.sim-input-row { display: flex; gap: 8px; padding: 14px 6px 8px; border-top: 1px solid rgba(255,255,255,0.15); }
+.sim-input-row input {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.95);
+  border: 2px solid var(--green);
+  border-radius: 22px;
+  padding: 13px 18px;
+  color: var(--ink);
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  outline: none;
+}
+.sim-input-row input::placeholder { color: var(--muted); }
+.sim-input-row input:focus { border-color: var(--green-dark); }
+#sim-send {
+  width: 44px; height: 44px;
+  background: var(--green);
+  border: none;
+  border-radius: 50%;
+  color: var(--white);
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 600;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+#sim-send:hover:not(:disabled) { background: var(--green-dark); transform: scale(1.08); }
+#sim-send:disabled { opacity: 0.4; cursor: not-allowed; }
+.sim-score-bar {
+  margin-top: 14px; padding: 12px 14px;
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px; display: flex; align-items: center; gap: 10px;
+  flex-wrap: wrap;
+}
+.sim-score-label { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.6); }
+.sim-score-badge { padding: 3px 10px; border-radius: 4px; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; }
+.sim-score-badge.hot { background: var(--red); color: var(--white); }
+.sim-score-badge.warm { background: #ffb800; color: var(--ink); }
+.sim-score-badge.cold { background: #6b7280; color: var(--white); }
+.sim-score-summary { font-size: 13px; color: rgba(255,255,255,0.85); flex: 1; min-width: 200px; }
+
+/* === Responsive === */
+@media (max-width: 900px) {
+  nav.site-nav { padding: 12px 18px; }
+  .nav-links { gap: 14px; }
+  .nav-links a:not(.btn-nav) { display: none; }
+  .has-dropdown { display: none; }
+  section { padding: 60px 20px; }
+  .hero { padding: 80px 20px 60px; }
+  .page-header { padding: 80px 20px 50px; }
+  .split { grid-template-columns: 1fr; gap: 36px; }
+  .footer-inner { grid-template-columns: 1fr 1fr; }
+  .footer-bottom { justify-content: center; text-align: center; }
+  .money-grid { grid-template-columns: 1fr; gap: 32px; }
+  .sim-wrap { grid-template-columns: 1fr; }
+  .sim-scenarios { flex-direction: row; overflow-x: auto; padding-bottom: 6px; }
+  .sim-scenario { min-width: 200px; flex-shrink: 0; }
+}
+
+@media (max-width: 600px) {
+  .step { flex-direction: column; gap: 12px; }
+  .step-num { font-size: 32px; min-width: auto; }
+  .tool-header { flex-direction: column; gap: 16px; }
+}
+</style>
+</head>
+<body>
+<nav class="site-nav">
+  <a href="#home" data-route="home" class="logo">Chat<span class="logo-accent">Sales</span><sup class="tm-mark">™</sup></a>
+  <div class="nav-links">
+    <a href="#how" data-route="how">How It Works</a>
+    <span class="has-dropdown">
+      <a href="#industries" data-route="industries">Industries</a>
+      <div class="dropdown">
+        <a href="#home-services" data-route="home-services">Home Services</a>
+        <a href="#legal" data-route="legal">Legal Intake</a>
+        <a href="#dental" data-route="dental">Dental</a>
+        <a href="#senior" data-route="senior">Senior Living</a>
+      </div>
+    </span>
+    <a href="#pricing" data-route="pricing">Pricing</a>
+    <a href="#faq" data-route="faq">FAQ</a>
+    <a href="#demo" data-route="demo" class="btn-nav">Book a Demo</a>
+  </div>
+</nav>
+
+<div class="journey-strip">
+  <div class="journey-inner">
+    <a href="#home" data-route="home" class="journey-step" data-journey="discover">
+      <span class="journey-num">1</span><span class="journey-label">Discover</span>
+    </a>
+    <div class="journey-divider"></div>
+    <a href="#how" data-route="how" class="journey-step" data-journey="see">
+      <span class="journey-num">2</span><span class="journey-label">See It Work</span>
+    </a>
+    <div class="journey-divider"></div>
+    <a href="#pricing" data-route="pricing" class="journey-step" data-journey="fit">
+      <span class="journey-num">3</span><span class="journey-label">Check Fit</span>
+    </a>
+    <div class="journey-divider"></div>
+    <a href="#demo" data-route="demo" class="journey-step" data-journey="book">
+      <span class="journey-num">4</span><span class="journey-label">Book Demo</span>
+    </a>
+  </div>
+</div>
+
+<!-- ====================== HOME ====================== -->
+<section class="page-section" data-page="home">
+<main>
+<header class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <div class="tag-pill">
+      <div class="live-dot"></div>
+      Built for shops where one missed lead is real money
+    </div>
+    <h1>More booked jobs. More closed cases. <span class="accent">Every single week.</span></h1>
+    <p class="hero-sub">ChatSales™ texts your leads back the second they come in, from a real iPhone number, like a real person. It asks the right questions, sorts the hot ones from the cold ones and drops them on your team while your competition is still typing their follow-up email.</p>
+    <div class="cta-row">
+      <a href="#demo" data-route="demo" class="btn btn-primary">Book a Demo</a>
+      <a href="#how" data-route="how" class="btn btn-outline">See How It Works →</a>
+    </div>
+  </div>
+</header>
+
+<section class="video-section" id="see-it">
+  <div class="container">
+    <div class="video-copy">
+      <div class="eyebrow">See it in 90 seconds</div>
+      <h2>Watch ChatSales™ <span class="accent">close a lead in real time.</span></h2>
+      <p>A real inbound lead. A real iPhone. A real conversation that ends with a booked appointment, before the homeowner has time to call the next contractor on the list.</p>
+      <div class="video-stats">
+        <div>
+          <div class="video-stat-num">90s</div>
+          <div class="video-stat-label">RUNTIME</div>
+        </div>
+        <div>
+          <div class="video-stat-num">2 min</div>
+          <div class="video-stat-label">AVG FIRST REPLY</div>
+        </div>
+        <div>
+          <div class="video-stat-num">7/10</div>
+          <div class="video-stat-label">QUALIFIED CONVOS BOOK</div>
+        </div>
+      </div>
+      <div class="cta-row">
+        <a href="#demo" data-route="demo" class="btn btn-primary">Book a Live Demo</a>
+        <a href="#how" data-route="how" class="btn btn-outline">See the Full Process →</a>
+      </div>
+    </div>
+
+    <a href="#demo" data-route="demo" class="video-frame" aria-label="Watch the 90-second demo (will open booking page until video is wired up)">
+      <div class="video-frame-label">LIVE WALKTHROUGH</div>
+      <div class="video-frame-time">1:34</div>
+      <div class="video-play" aria-hidden="true"></div>
+    </a>
+  </div>
+</section>
+
+<section class="tool-section" id="home-calc">
+  <div class="container">
+    <div class="tool-banner">
+      <div class="tool-eyebrow">Money You're Leaving on the Table</div>
+      <h2 class="tool-heading">See what your shop <span class="accent">would win back every month.</span></h2>
+      <p class="tool-sub">Pick your trade. Tweak the numbers if yours run different. The number on the right is what the other guy is collecting right now, money you'd pull back the day ChatSales™ goes live.</p>
+    </div>
+
+    <div class="tool-tabs" id="calc-tabs">
+      <button class="tool-tab active" data-preset="plumbing">Plumbing</button>
+      <button class="tool-tab" data-preset="electrical">Electricians</button>
+      <button class="tool-tab" data-preset="pest">Pest Control</button>
+      <button class="tool-tab" data-preset="hvac">HVAC</button>
+    </div>
+
+    <div class="tool-card">
+      <div class="tool-inputs-row">
+        <div class="tool-input">
+          <label for="calc-job" title="Average revenue per closed job">Average job ticket</label>
+          <div class="tool-money-input">
+            <span>$</span><input type="number" id="calc-job" value="339" min="50" max="10000">
+          </div>
+        </div>
+        <div class="tool-input">
+          <label for="calc-inquiries" title="Calls + forms that come in after hours per month">After-hours leads / month</label>
+          <input type="number" id="calc-inquiries" value="65" min="1" max="500">
+        </div>
+        <div class="tool-input">
+          <label for="calc-missed" title="How many you don't get back to fast enough">% you miss</label>
+          <div class="tool-pct-input">
+            <input type="number" id="calc-missed" value="35" min="0" max="100"><span>%</span>
+          </div>
+        </div>
+        <div class="tool-input">
+          <label for="calc-book" title="Of the ones you do answer, the % that turn into booked jobs">% that become jobs</label>
+          <div class="tool-pct-input">
+            <input type="number" id="calc-book" value="65" min="0" max="100"><span>%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tool-result">
+        <div class="tool-result-card">
+          <div class="tool-result-label">Money You'd Pull Back / Month</div>
+          <div class="tool-result-big" id="calc-big">$5,016</div>
+          <div class="tool-result-sub" id="calc-sub">based on the numbers above</div>
+        </div>
+        <div class="tool-bars">
+          <div>
+            <div class="tool-bar-label">
+              <span>Jobs you'd win back each month</span>
+              <span class="tool-bar-val" id="calc-jobs">15</span>
+            </div>
+            <div class="tool-bar-track"><div class="tool-bar-fill green" id="calc-bar-jobs" style="width:30%"></div></div>
+          </div>
+          <div>
+            <div class="tool-bar-label">
+              <span>Money you'd pull back this year</span>
+              <span class="tool-bar-val" id="calc-annual">$60,192</span>
+            </div>
+            <div class="tool-bar-track"><div class="tool-bar-fill amber" id="calc-bar-annual" style="width:65%"></div></div>
+          </div>
+          <div>
+            <div class="tool-bar-label">
+              <span>Money walking out the door every day</span>
+              <span class="tool-bar-val" id="calc-daily">$165</span>
+            </div>
+            <div class="tool-bar-track"><div class="tool-bar-fill red" id="calc-bar-daily" style="width:18%"></div></div>
+          </div>
+          <div class="tool-net">
+            <span>This is what the other guy is getting</span>
+            <span class="tool-net-val" id="calc-net">$5,016 / mo</span>
+          </div>
+        </div>
+      </div>
+
+      <p class="tool-disclaimer">Defaults are conservative national numbers. Change any box above to match your shop. Math: calls/forms × percent you miss × percent that become jobs × your average ticket.</p>
+    </div>
+  </div>
+</section>
+
+<section class="testimonial-strip">
+  <div class="container">
+    <div class="testimonial">
+      <div class="testimonial-quote-mark">“</div>
+      <div class="testimonial-body">
+        <p class="testimonial-quote">We pulled in $11,400 in recovered revenue our first month. ChatSales™ paid for the entire year by week 6.</p>
+        <div class="testimonial-attr">
+          <span class="testimonial-name">Tom Calderon</span>
+          <span class="testimonial-role">Owner · Calderon Electrical · Tucson, AZ</span>
+        </div>
+        <span class="testimonial-result">+$11,400 month 1</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tool-section" id="response-benchmark" style="background:var(--white)">
+  <div class="container">
+    <div class="tool-banner">
+      <div class="tool-eyebrow">How Fast Are You?</div>
+      <h2 class="tool-heading">See how your reply time <span class="accent">stacks up against the shops winning your jobs.</span></h2>
+      <p class="tool-sub">Pick your industry. Drag the marker to your usual reply time. We'll show you where you sit, what the fast shops are doing and how many more jobs you'd book if you matched them.</p>
+    </div>
+
+    <div class="tool-card" style="background:var(--paper);border-color:transparent">
+      <div class="tool-tabs" id="bench-tabs">
+        <button class="tool-tab active" data-bench="home-services">Home Services</button>
+        <button class="tool-tab" data-bench="legal">Legal</button>
+        <button class="tool-tab" data-bench="dental">Dental</button>
+        <button class="tool-tab" data-bench="senior">Senior Living</button>
+      </div>
+
+      <div class="bench-controls-row">
+        <label for="bench-input">How long does it take you to reply to a new lead?</label>
+        <div class="bench-input-group">
+          <input type="number" id="bench-input" value="3" min="1" max="999">
+          <select id="bench-unit">
+            <option value="1">minutes</option>
+            <option value="60" selected>hours</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="bench-scale">
+        <div class="bench-bar">
+          <div class="bench-zone z-top"    style="left:0;width:20.2%"><span>Fast shops</span></div>
+          <div class="bench-zone z-avg"    style="left:20.2%;width:48.7%"><span>Most shops</span></div>
+          <div class="bench-zone z-bottom" style="left:68.9%;width:31.1%"><span>Losing jobs</span></div>
+        </div>
+        <div class="bench-marker" id="bench-marker" style="left:68.9%">
+          <div class="bench-marker-pin"></div>
+        </div>
+        <div class="bench-axis">
+          <span style="left:0%">5 min</span>
+          <span style="left:20.2%">15 min</span>
+          <span style="left:51.4%">1 hr</span>
+          <span style="left:68.9%">4 hr</span>
+          <span style="left:91.3%">24 hr</span>
+          <span style="left:100%">48+ hr</span>
+        </div>
+        <div class="bench-hint">Drag the marker or click anywhere on the bar, to see how your numbers shift</div>
+      </div>
+
+      <div class="bench-readout">
+        <div>
+          <div class="bench-stat-label">How you stack up</div>
+          <div class="bench-stat-val" id="bench-percentile">Slower than most</div>
+        </div>
+        <div>
+          <div class="bench-stat-label">What the fastest shops hit</div>
+          <div class="bench-stat-val" id="bench-top">Under 5 min</div>
+        </div>
+        <div>
+          <div class="bench-stat-label">Extra jobs you'd book if you matched them</div>
+          <div class="bench-stat-val" id="bench-lift">+47% more</div>
+        </div>
+      </div>
+
+      <div class="bench-verdict" id="bench-verdict">
+        This is the leak. By the time you reply, the lead has already heard from somebody faster. The shops winning your jobs reply in under 5 minutes and that's the fix.
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonial-strip" style="background:var(--white);padding-top:0">
+  <div class="container">
+    <div class="testimonial">
+      <div class="testimonial-quote-mark">“</div>
+      <div class="testimonial-body">
+        <p class="testimonial-quote">We were missing 30% of after-hours calls. After ChatSales™, we book most of them as same-day or next-morning. That's two extra HVAC techs' worth of revenue, with zero new hires.</p>
+        <div class="testimonial-attr">
+          <span class="testimonial-name">Mike Trevino</span>
+          <span class="testimonial-role">Owner · Trevino Heating &amp; Air · Phoenix, AZ</span>
+        </div>
+        <span class="testimonial-result">2× tech capacity, 0 new hires</span>
+      </div>
+    </div>
+
+    <div class="mid-cta">
+      <div class="mid-cta-text">
+        <div class="mid-cta-title">Ready to see what you'd win back?</div>
+        <div class="mid-cta-sub">15-minute walkthrough with your numbers, your industry, real examples.</div>
+      </div>
+      <div class="btn-row">
+        <a href="#demo" data-route="demo" class="btn-white">Book a Demo</a>
+        <a href="#how" data-route="how" class="btn-ghost">See How It Works</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="trust-bar">
+  <div class="trust-inner">
+    <div class="trust-item"><div class="trust-dot"></div>Real blue-bubble iMessage</div>
+    <div class="trust-item"><div class="trust-dot"></div>Natural lead qualification</div>
+    <div class="trust-item"><div class="trust-dot"></div>Hot / warm / cold scoring</div>
+    <div class="trust-item"><div class="trust-dot"></div>CRM-ready handoff</div>
+    <div class="trust-item"><div class="trust-dot"></div>Built for expensive missed leads</div>
+  </div>
+</div>
+
+<section>
+  <div class="container">
+    <div class="eyebrow eyebrow-red">The problem</div>
+    <h2>The math is simple. The team that responds first <span class="accent">wins the job</span> 78% of the time.</h2>
+    <div class="split split-tight" style="margin-top:40px">
+      <div>
+        <p style="font-size:17px;color:var(--ink-soft);line-height:1.65">A lead fills out a form. Calls after hours. Requests a quote. Asks for a consultation. Looks at two or three providers at the same time.</p>
+        <p style="font-size:17px;color:var(--ink-soft);line-height:1.65;margin-top:18px">If your business answers slowly, the market does not interpret that as neutral.</p>
+      </div>
+      <div>
+        <p style="font-size:17px;line-height:1.65">It interprets it as:</p>
+        <ul class="clean-list">
+          <li>less organized</li>
+          <li>less trustworthy</li>
+          <li>less available</li>
+          <li>less likely to help now</li>
+        </ul>
+        <p style="font-size:17px;line-height:1.65;margin-top:24px">That's why being fast matters. And that's why a generic chatbot doesn't cut it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+    <div class="eyebrow">The ChatSales™ difference</div>
+    <h2>Outpace every competitor. <span class="accent">Win the leads they're still waiting on.</span></h2>
+    <p class="section-intro">ChatSales™ does not just send a message. It starts a better first conversation. It reaches out through real blue-bubble iMessage, qualifies with natural language, handles common edge cases, scores the lead and gives your team the context needed to act fast.</p>
+    <div class="feature-grid-4">
+      <div class="feature-card">
+        <div class="icon-box">💬</div>
+        <h3>Real iMessage, real trust</h3>
+        <p>Blue-bubble outreach from a real iPhone number. Not a generic shortcode. Not a spammy-looking SMS blast.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon-box">🧠</div>
+        <h3>Conversational, not robotic</h3>
+        <p>ChatSales™ matches tone and urgency so the conversation feels useful, not canned.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon-box">🎯</div>
+        <h3>Smarter prioritization</h3>
+        <p>Every lead is scored and summarized so your team knows who to call first.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon-box">✓</div>
+        <h3>Cleaner handoff</h3>
+        <p>Better information. Better timing. Less waste between interest and action.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="eyebrow">Built for your category</div>
+    <h2>Same playbook. <span class="accent">Different wins.</span></h2>
+    <p class="section-intro">Your buyers don't behave like everyone else's. ChatSales™ is tuned to four industries where the first response decides the deal and the math behind a missed lead is brutal.</p>
+    <div class="industries-grid">
+      <a href="#home-services" data-route="home-services" class="industry-card">
+        <div class="icon-box">🔧</div>
+        <span class="tag">HOME SERVICES</span>
+        <h3>Home Services</h3>
+        <p>HVAC, plumbing, electrical, pest control, roofing, restoration, remodeling, local shops where the customer hires whoever picks up first.</p>
+        <span class="arrow">Explore →</span>
+      </a>
+      <a href="#legal" data-route="legal" class="industry-card">
+        <div class="icon-box">⚖️</div>
+        <span class="tag">LEGAL INTAKE</span>
+        <h3>Legal Intake</h3>
+        <p>Personal injury, family law, criminal defense, immigration, estate planning, elder law, firms where the first call books the case.</p>
+        <span class="arrow">Explore →</span>
+      </a>
+      <a href="#dental" data-route="dental" class="industry-card">
+        <div class="icon-box">🦷</div>
+        <span class="tag">DENTAL</span>
+        <h3>Dental</h3>
+        <p>Implants, cosmetic, Invisalign, family practices doing big-ticket work, patients want a fast, calm reply before they book.</p>
+        <span class="arrow">Explore →</span>
+      </a>
+      <a href="#senior" data-route="senior" class="industry-card">
+        <div class="icon-box">🏡</div>
+        <span class="tag">SENIOR LIVING</span>
+        <h3>Senior Living</h3>
+        <p>Senior communities, elder law, hospice, adult day, families under pressure who pick the place that answers them kindly and fast.</p>
+        <span class="arrow">Explore →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <h2>More booked jobs. More closed cases. <span class="accent">Every single week.</span></h2>
+  <p>ChatSales™ helps your business respond faster, qualify better and create a stronger first impression before the lead moves on.</p>
+  <div class="cta-row">
+    <a href="#demo" data-route="demo" class="btn btn-primary">Book a Demo</a>
+    <a href="#how" data-route="how" class="btn btn-outline-light">See How It Works →</a>
+  </div>
+</section>
+</main>
+</section>
+
+<!-- ====================== HOW IT WORKS ====================== -->
+<section class="page-section" data-page="how">
+<main>
+<header class="page-header">
+  <div class="page-header-bg"></div>
+  <div class="hero-inner">
+    <div class="tag-pill"><div class="live-dot"></div>The process, end to end</div>
+    <h1>From new lead to <span class="accent">booked appointment in under 5 minutes.</span></h1>
+    <p class="hero-sub">A repeatable six-step pipeline that fires the moment an inquiry lands. The lead gets a fast, human-feeling first response. Your team gets a scored, summarized opportunity ready to act on.</p>
+  </div>
+</header>
+
+<section>
+  <div class="container">
+    <div class="eyebrow">The pipeline</div>
+    <h2>Six steps. <span class="accent">Under five minutes.</span></h2>
+    <p class="section-intro">From the moment the inquiry lands to the moment your team has a scored, summarized opportunity ready to act on.</p>
+
+    <div class="flow-chart">
+      <div class="flow-node">
+        <div class="flow-node-num">STEP 01</div>
+        <div class="flow-node-icon">📥</div>
+        <div class="flow-node-title">A lead comes in</div>
+        <div class="flow-node-desc">Form, quote request, consultation ask or any other intake source.</div>
+      </div>
+      <div class="flow-arrow" aria-hidden="true"></div>
+      <div class="flow-node">
+        <div class="flow-node-num">STEP 02</div>
+        <div class="flow-node-icon">💬</div>
+        <div class="flow-node-title">ChatSales™ responds immediately</div>
+        <div class="flow-node-desc">Real blue-bubble iMessage from a real iPhone number. No silence, no delay.</div>
+      </div>
+      <div class="flow-arrow" aria-hidden="true"></div>
+      <div class="flow-node">
+        <div class="flow-node-num">STEP 03</div>
+        <div class="flow-node-icon">🗣️</div>
+        <div class="flow-node-title">The conversation feels natural</div>
+        <div class="flow-node-desc">Tone and urgency adjust to the situation. No robotic scripts.</div>
+      </div>
+      <div class="flow-arrow" aria-hidden="true"></div>
+      <div class="flow-node">
+        <div class="flow-node-num">STEP 04</div>
+        <div class="flow-node-icon">📋</div>
+        <div class="flow-node-title">Key details are gathered</div>
+        <div class="flow-node-desc">Service need, urgency, location, timing and readiness, captured cleanly.</div>
+      </div>
+      <div class="flow-arrow" aria-hidden="true"></div>
+      <div class="flow-node">
+        <div class="flow-node-num">STEP 05</div>
+        <div class="flow-node-icon">🎯</div>
+        <div class="flow-node-title">The lead is scored</div>
+        <div class="flow-node-desc">Hot, warm or cold, with a short conversation summary for your team.</div>
+      </div>
+      <div class="flow-arrow" aria-hidden="true"></div>
+      <div class="flow-node">
+        <div class="flow-node-num">STEP 06</div>
+        <div class="flow-node-icon">🤝</div>
+        <div class="flow-node-title">Cleaner handoff</div>
+        <div class="flow-node-desc">Your staff gets the context needed to prioritize and act fast.</div>
+      </div>
+    </div>
+
+    <div class="flow-outcome">
+      <div class="flow-outcome-icon">✓</div>
+      <div class="flow-outcome-text"><strong>Outcome:</strong> The opportunity reaches your team with full context, while the buyer is still leaning in.</div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonial-strip">
+  <div class="container">
+    <div class="testimonial">
+      <div class="testimonial-quote-mark">“</div>
+      <div class="testimonial-body">
+        <p class="testimonial-quote">I used to lose form fills overnight. Now I wake up to a list of pre-qualified jobs scored hot, warm and cold. My team starts the day knowing exactly who to call first.</p>
+        <div class="testimonial-attr">
+          <span class="testimonial-name">Dana Ortiz</span>
+          <span class="testimonial-role">GM · RushFlow Plumbing · Austin, TX</span>
+        </div>
+        <span class="testimonial-result">Mornings go from chaos to clarity</span>
+      </div>
+    </div>
+
+    <div class="mid-cta">
+      <div class="mid-cta-text">
+        <div class="mid-cta-title">Want to see this pipeline running on your leads?</div>
+        <div class="mid-cta-sub">We'll plug in your actual lead sources on the demo call and show you the conversation flow that fits your industry.</div>
+      </div>
+      <div class="btn-row">
+        <a href="#demo" data-route="demo" class="btn-white">Book a Demo</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--paper);padding:90px 32px" id="sim-section">
+  <div class="container">
+    <div class="eyebrow">Live Demo</div>
+    <h2>Try it like a real customer would. <span class="accent">Ask anything.</span></h2>
+    <p class="section-intro">Pick a scenario, then type whatever you want, "what city are you in?", "how's the weather?", "how much is this gonna cost?" or just describe the problem. ChatSales™ handles the chit-chat the same way it handles the qualifying questions: like a real person.</p>
+
+    <div class="sim-instructions">
+      <div class="sim-step"><div class="sim-step-num">1</div><div class="sim-step-text">Pick a scenario →</div></div>
+      <div class="sim-step"><div class="sim-step-num">2</div><div class="sim-step-text">Type whatever you'd say to a real shop</div></div>
+      <div class="sim-step"><div class="sim-step-num">3</div><div class="sim-step-text">Watch the convo until the lead is booked</div></div>
+    </div>
+
+    <div class="sim-wrap">
+      <div class="sim-scenarios">
+        <div class="sim-scenarios-label">CHOOSE A SCENARIO</div>
+        <button class="sim-scenario active" data-scenario="hvac" data-greeting="Hey there! Saw you reached out about your AC. What's going on with it?">
+          <div class="sim-icon">🌡️</div>
+          <div><div class="sim-name">HVAC emergency</div><div class="sim-hint">Try: "My AC's dead" or "What city are you in?"</div></div>
+        </button>
+        <button class="sim-scenario" data-scenario="legal" data-greeting="Hi, thanks for reaching out. I want to make sure you get connected to the right person quickly. Can you tell me a bit about what's going on?">
+          <div class="sim-icon">⚖️</div>
+          <div><div class="sim-name">Legal consult</div><div class="sim-hint">Try: "I was in an accident" or "How much do you charge?"</div></div>
+        </button>
+        <button class="sim-scenario" data-scenario="dental" data-greeting="Hi! Thanks for your interest. I'd love to help you figure out the best next step. What were you hoping to learn about?">
+          <div class="sim-icon">🦷</div>
+          <div><div class="sim-name">Dental implant</div><div class="sim-hint">Try: "I'm scared of the dentist" or "Where are you located?"</div></div>
+        </button>
+        <button class="sim-scenario" data-scenario="senior" data-greeting="Hi, thank you for reaching out. I know this can feel like a lot. I'm here to help, whenever you're ready, tell me a bit about your situation.">
+          <div class="sim-icon">🏡</div>
+          <div><div class="sim-name">Senior living</div><div class="sim-hint">Try: "Looking for mom" or "I'm so overwhelmed"</div></div>
+        </button>
+      </div>
+
+      <div>
+        <div class="sim-phone">
+          <div class="sim-phone-header">
+            <div class="sim-avatar">CS</div>
+            <div>
+              <div class="sim-phone-name">ChatSales™ · (512) 555-0142</div>
+              <div class="sim-phone-status">iMessage</div>
+            </div>
+          </div>
+          <div class="sim-body" id="sim-body"><div class="sim-timestamp">Today</div></div>
+          <div class="sim-input-row">
+            <input type="text" id="sim-input" placeholder="Ask anything, try &quot;what city are you in?&quot;" autocomplete="off">
+            <button id="sim-send" aria-label="Send">→</button>
+          </div>
+          <div class="sim-score-bar" id="sim-score" style="display:none">
+            <span class="sim-score-label">Lead Score</span>
+            <span class="sim-score-badge" id="sim-score-badge">·</span>
+            <span class="sim-score-summary" id="sim-score-summary"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p style="text-align:center;font-size:13px;color:var(--muted);margin-top:24px">A simulation, the real product runs on actual iMessage from a real iPhone number.</p>
+  </div>
+</section>
+
+<section class="final-cta">
+  <h2>Walk through your numbers. <span class="accent">See what you'd win.</span></h2>
+  <p>Walk through your lead flow with us. In 15 minutes you'll see exactly where ChatSales™ fits and where it doesn't.</p>
+  <div class="cta-row"><a href="#demo" data-route="demo" class="btn btn-primary">Book a Demo</a></div>
+</section>
+</main>
+</section>
+
+<!-- ====================== INDUSTRIES INDEX ====================== -->
+<section class="page-section" data-page="industries">
+<main>
+<header class="page-header">
+  <div class="page-header-bg"></div>
+  <div class="hero-inner">
+    <div class="tag-pill"><div class="live-dot"></div>Industries we serve</div>
+    <h1>Four industries. <span class="accent">One proven way to win more jobs.</span></h1>
+    <p class="hero-sub">ChatSales™ works best where the job is worth real money, the customer is shopping more than one place and the shop that texts back first usually wins the work.</p>
+  </div>
+</header>
+
+<section>
+  <div class="container">
+    <div class="industries-grid" style="margin-top:0">
+      <a href="#home-services" data-route="home-services" class="industry-card">
+        <div class="icon-box">🔧</div><span class="tag">HOME SERVICES</span>
+        <h3>Home Services</h3>
+        <p>For owners who want more booked jobs, fewer dead leads and less money wasted on ads that go nowhere.</p>
+        <span class="arrow">Explore Home Services →</span>
+      </a>
+      <a href="#legal" data-route="legal" class="industry-card">
+        <div class="icon-box">⚖️</div><span class="tag">LEGAL INTAKE</span>
+        <h3>Legal Intake</h3>
+        <p>For firms whose leads are stressed, time-sensitive and calling three other firms while they wait on you.</p>
+        <span class="arrow">Explore Legal Intake →</span>
+      </a>
+      <a href="#dental" data-route="dental" class="industry-card">
+        <div class="icon-box">🦷</div><span class="tag">DENTAL</span>
+        <h3>Dental</h3>
+        <p>For practices where big-ticket inquiries need a fast, calm first reply before the patient picks a different chair.</p>
+        <span class="arrow">Explore Dental →</span>
+      </a>
+      <a href="#senior" data-route="senior" class="industry-card">
+        <div class="icon-box">🏡</div><span class="tag">SENIOR LIVING</span>
+        <h3>Senior Living</h3>
+        <p>For places that work with families under stress, where a calm, fast first answer is the reason they tour with you.</p>
+        <span class="arrow">Explore Senior Living →</span>
+      </a>
+    </div>
+
+    <div class="mid-cta">
+      <div class="mid-cta-text">
+        <div class="mid-cta-title">Not sure which playbook fits?</div>
+        <div class="mid-cta-sub">We'll walk through your lead flow and tell you straight, what changes, what doesn't and whether ChatSales™ is the right move.</div>
+      </div>
+      <div class="btn-row">
+        <a href="#demo" data-route="demo" class="btn-white">Book a 15-min Call</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <h2>The same playbook. <span class="accent">Winning across four very different industries.</span></h2>
+  <p>ChatSales™ is built for businesses where the cost of a missed lead is real.</p>
+  <div class="cta-row"><a href="#demo" data-route="demo" class="btn btn-primary">Book a Demo</a></div>
+</section>
+</main>
+</section>
+
+<!-- ====================== INDUSTRY PAGES (stubs, duplicate of industries for now) ====================== -->
+<section class="page-section" data-page="home-services">
+<main>
+<header class="page-header">
+  <div class="page-header-bg"></div>
+  <div class="hero-inner">
+    <div class="tag-pill"><div class="live-dot"></div>For Home Services</div>
+    <h1>Real shop. Real reply. <span class="accent">Real fast.</span></h1>
+    <p class="hero-sub">A homeowner with a dead AC or a flooded basement is comparing two or three shops. The one that texts back first, from a real local number, sounding like a real local foreman, wins the job. ChatSales™ is built so your shop is always that shop.</p>
+    <div class="cta-row">
+      <a href="#demo" data-route="demo" class="btn btn-primary">Book a Home Services Demo</a>
+      <a href="#how" data-route="how" class="btn btn-outline">See How It Works →</a>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="container">
+    <div class="eyebrow">Why homeowners hire you</div>
+    <h2>The whole game is trust. <span class="accent">ChatSales™ wins it in the first 30 seconds.</span></h2>
+    <p class="section-intro">Homeowners don't see your trucks, your reviews or your license, not yet. All they see is whoever replied first and whether that first reply felt like a real shop or a robot. We make sure it feels like a real shop.</p>
+
+    <div class="feature-grid-4" style="margin-top:36px">
+      <div class="feature-card">
+        <div class="icon-box">📍</div>
+        <h3>Real local number</h3>
+        <p>Texts come from a real iPhone in your area code, not a 1-800, not a shortcode. The homeowner sees a local number and trusts it.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon-box">🇺🇸</div>
+        <h3>US-based, no offshore</h3>
+        <p>No call center in another time zone reading a script. Real US dispatch built around your service area and your trades.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon-box">🗣️</div>
+        <h3>Sounds like your shop</h3>
+        <p>Scripts tuned to your shop's name, your trade, your tone. The homeowner thinks they're already talking to your dispatcher.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon-box">⏱️</div>
+        <h3>Show-up window in writing</h3>
+        <p>The customer ends the chat with a real arrival window, not a vague "someone will call back." That's the trust moment.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon-box">💵</div>
+        <h3>Honest about pricing</h3>
+        <p>No bait, no "$49 service call!" lies that blow up on site. ChatSales™ sets the right expectation before the truck rolls.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon-box">🆘</div>
+        <h3>Knows when to call a human</h3>
+        <p>True emergencies and weird edge cases hand off to your team fast. No robotic loop, no dropped customers, no missed jobs.</p>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top:36px">
+      <p>The homeowner doesn't remember which shop had the slickest website. They remember which one texted back first, treated them like a neighbor and showed up when they said they would. That's the loop ChatSales™ closes for you.</p>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--paper)">
+  <div class="container">
+    <div class="eyebrow">Best-fit trades</div>
+    <h2>Proven across the trades. <span class="accent">Same outcome every time: more booked jobs.</span></h2>
+    <div class="feature-grid-4" style="margin-top:36px">
+      <div class="feature-card"><div class="icon-box">🌡️</div><h3>HVAC</h3><p>No-cool, no-heat emergencies and high-ticket replacement leads.</p></div>
+      <div class="feature-card"><div class="icon-box">🔧</div><h3>Plumbing</h3><p>Burst pipes, sewage backups and after-hours emergencies.</p></div>
+      <div class="feature-card"><div class="icon-box">⚡</div><h3>Electrical</h3><p>Panel upgrades, EV chargers and commercial vs. residential routing.</p></div>
+      <div class="feature-card"><div class="icon-box">🐛</div><h3>Pest Control</h3><p>Contract upsells, severity triage and recurring service qualification.</p></div>
+      <div class="feature-card"><div class="icon-box">🏠</div><h3>Roofing</h3><p>Storm response, insurance leads and high-ticket re-roof opportunities.</p></div>
+      <div class="feature-card"><div class="icon-box">💧</div><h3>Restoration</h3><p>Water, fire and mold response where minutes affect job size.</p></div>
+      <div class="feature-card"><div class="icon-box">🚪</div><h3>Garage Doors</h3><p>Same-day repair leads and high-conversion replacement inquiries.</p></div>
+      <div class="feature-card"><div class="icon-box">🌳</div><h3>Landscaping</h3><p>Design consultations and recurring maintenance contract leads.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonial-strip">
+  <div class="container">
+    <div class="testimonial">
+      <div class="testimonial-quote-mark">“</div>
+      <div class="testimonial-body">
+        <p class="testimonial-quote">Booked 41 same-day HVAC service calls in our first six weeks. These were leads that would've gone to whoever called us back fastest and that wasn't us before.</p>
+        <div class="testimonial-attr">
+          <span class="testimonial-name">Carlos Mendez</span>
+          <span class="testimonial-role">Owner · Mendez Cooling Co · Dallas, TX</span>
+        </div>
+        <span class="testimonial-result">+41 booked jobs in 6 weeks</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <h2>Real shop. Real reply. <span class="accent">Real fast.</span></h2>
+  <p>See ChatSales™ running on your trade, your area code, your shop voice, your show-up windows. 15 minutes, real examples, no high-pressure pitch.</p>
+  <div class="cta-row"><a href="#demo" data-route="demo" class="btn btn-primary">Book a Home Services Demo</a></div>
+</section>
+</main>
+</section>
+
+<section class="page-section" data-page="legal">
+<main>
+<header class="page-header">
+  <div class="page-header-bg"></div>
+  <div class="hero-inner">
+    <div class="tag-pill"><div class="live-dot"></div>For Legal Intake</div>
+    <h1>Every fact captured. Every consent logged. <span class="accent">Every consult booked.</span></h1>
+    <p class="hero-sub">Legal intake isn't a chat, it's a paperwork-driven, time-stamped, consent-captured exchange that has to hold up if the case ever does. ChatSales™ handles the structured part automatically, so the consult call starts where it should: discussing strategy, not asking "when did this happen?"</p>
+    <div class="cta-row">
+      <a href="#demo" data-route="demo" class="btn btn-primary">Book a Legal Demo</a>
+      <a href="#how" data-route="how" class="btn btn-outline">See How It Works →</a>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="container">
+    <div class="eyebrow">The details matter</div>
+    <h2>Structured intake. <span class="accent">Before a paralegal picks up the phone.</span></h2>
+    <p class="section-intro">Every case lives or dies on what gets captured up front and on whether the consent paperwork was done right. ChatSales™ runs both sides of that automatically, in writing, with timestamps.</p>
+
+    <div class="split" style="margin-top:36px">
+      <div>
+        <h3 style="color:var(--green-dark);font-weight:500;margin-bottom:14px">What gets captured automatically</h3>
+        <ul class="clean-list" style="margin-top:0">
+          <li>Case type (PI, family, criminal, immigration, estate, elder)</li>
+          <li>Incident date, filing date or arrest date</li>
+          <li>Jurisdiction and venue</li>
+          <li>Parties involved, for the conflict check</li>
+          <li>Police report, court date or filing reference number</li>
+          <li>Injury, damage or urgency level</li>
+          <li>Insurance carrier (for PI and property cases)</li>
+          <li>Best contact method and best time to call</li>
+          <li>Time-stamped TCPA consent for texting</li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="font-weight:500;margin-bottom:14px">Contract &amp; compliance built in</h3>
+        <ul class="clean-list" style="margin-top:0">
+          <li>TCPA-compliant consent captured in the first reply</li>
+          <li>Full conversation log preserved with timestamps</li>
+          <li>Clear "intake assistant, not legal advice" framing</li>
+          <li>State-bar-aware language, no unauthorized practice risk</li>
+          <li>Conflict-check fields surfaced before the consult is booked</li>
+          <li>Encrypted in transit and at rest</li>
+          <li>Data export and retention policy your firm controls</li>
+          <li>BAA available for firms handling PHI (elder law, med-mal)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top:36px">
+      <p>The consult call starts where it should: discussing strategy. Not "remind me again when this happened?"</p>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--paper)">
+  <div class="container">
+    <div class="eyebrow">Best-fit practice areas</div>
+    <h2>Proven across legal. <span class="accent">The firms winning more consults all do this.</span></h2>
+    <div class="feature-grid-4" style="margin-top:36px">
+      <div class="feature-card"><div class="icon-box">⚖️</div><h3>Personal Injury</h3><p>Anxious, time-sensitive leads who often contact multiple firms in the same hour.</p></div>
+      <div class="feature-card"><div class="icon-box">👨‍👩‍👧</div><h3>Family Law</h3><p>Overwhelmed clients navigating divorce, custody and high-emotion intake.</p></div>
+      <div class="feature-card"><div class="icon-box">🛡️</div><h3>Criminal Defense</h3><p>Urgent inquiries that need immediate reassurance and clear next steps.</p></div>
+      <div class="feature-card"><div class="icon-box">🌐</div><h3>Immigration</h3><p>Cautious leads who need patient, clear, trustworthy first contact.</p></div>
+      <div class="feature-card"><div class="icon-box">📜</div><h3>Estate Planning</h3><p>Considered decisions where credibility and warmth matter from message one.</p></div>
+      <div class="feature-card"><div class="icon-box">👴</div><h3>Elder Law</h3><p>Family-driven inquiries where empathy and clarity affect the next call.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonial-strip">
+  <div class="container">
+    <div class="testimonial">
+      <div class="testimonial-quote-mark">“</div>
+      <div class="testimonial-body">
+        <p class="testimonial-quote">Our intake conversion went from 22% to 41% in the first 60 days. The leads aren't different, we just get to them first now. That's the whole game in PI.</p>
+        <div class="testimonial-attr">
+          <span class="testimonial-name">Rachel Lin, Esq.</span>
+          <span class="testimonial-role">Partner · Lin &amp; Marsh Injury Lawyers · Chicago, IL</span>
+        </div>
+        <span class="testimonial-result">22% → 41% intake conversion</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <h2>Make the consult call shorter. <span class="accent">Make the close rate higher.</span></h2>
+  <p>See exactly what gets captured and what's documented, before your attorney picks up the phone.</p>
+  <div class="cta-row"><a href="#demo" data-route="demo" class="btn btn-primary">Book a Legal Demo</a></div>
+</section>
+</main>
+</section>
+
+<section class="page-section" data-page="dental">
+<main>
+<header class="page-header">
+  <div class="page-header-bg"></div>
+  <div class="hero-inner">
+    <div class="tag-pill"><div class="live-dot"></div>For Dental Practices</div>
+    <h1>HIPAA-compliant. US-based. <span class="accent">Built for the practice that can't afford a compliance slip.</span></h1>
+    <p class="hero-sub">ChatSales™ runs on US infrastructure with BAA paperwork ready on day one and conversation guardrails tuned to ADA, HIPAA and state dental board rules. Patient inquiries get a fast, calm first reply, without the regulatory exposure of offshore chatbots or generic SaaS tools.</p>
+    <div class="cta-row">
+      <a href="#demo" data-route="demo" class="btn btn-primary">Book a Dental Demo</a>
+      <a href="#how" data-route="how" class="btn btn-outline">See How It Works →</a>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="container">
+    <div class="eyebrow">Built for US dental compliance</div>
+    <h2>Six things every dental practice has to get right. <span class="accent">We got them all right.</span></h2>
+    <p class="section-intro">Generic chatbots and offshore tools cut corners on PHI, encryption and state board rules. ChatSales™ doesn't, because we built it from day one for US dental practices that answer to HIPAA, the state board and the patient.</p>
+
+    <div class="feature-grid-4" style="margin-top:36px">
+      <div class="feature-card">
+        <div class="icon-box">🛡️</div>
+        <h3>HIPAA-compliant by default</h3>
+        <p>BAA paperwork ready on day one. PHI handled the way the regs require, encrypted, logged and access-controlled to your staff.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon-box">🇺🇸</div>
+        <h3>US-only data storage</h3>
+        <p>Every conversation lives on US infrastructure. No offshore servers, no foreign jurisdictions, no chain-of-custody surprises.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon-box">🔐</div>
+        <h3>End-to-end encryption</h3>
+        <p>Encrypted in transit and at rest. Conversation logs auditable, exportable and locked down to authorized practice staff only.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon-box">✉️</div>
+        <h3>TCPA-compliant texting</h3>
+        <p>Patient consent captured in writing on the first message. Documented opt-out at any point. The exact standard plaintiffs' attorneys check for.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon-box">⚖️</div>
+        <h3>State dental board aware</h3>
+        <p>ChatSales™ never diagnoses, prescribes or advises treatment. It books consults and answers logistics. Clinical questions go to your staff.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon-box">♿</div>
+        <h3>ADA &amp; accessibility</h3>
+        <p>Text-based by design. Works with screen readers and accessibility tools so every patient can engage on equal footing.</p>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top:36px">
+      <p><strong>Your office manager will love you.</strong> Signed BAA, compliance docs, encrypted conversation logs, ready to hand to the auditor if the day ever comes. No more "wait, where is that conversation stored?" surprises.</p>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--paper)">
+  <div class="container">
+    <div class="eyebrow">Best-fit practice types</div>
+    <h2>Proven in dental. <span class="accent">From implants to family practices that drive electives.</span></h2>
+    <div class="feature-grid-4" style="margin-top:36px">
+      <div class="feature-card"><div class="icon-box">🦷</div><h3>Implant & Full-Arch</h3><p>High-value inquiries where reassurance and authority shape the consult decision.</p></div>
+      <div class="feature-card"><div class="icon-box">✨</div><h3>Cosmetic Dentistry</h3><p>Elective patients who compare practices on confidence as much as clinical fit.</p></div>
+      <div class="feature-card"><div class="icon-box">😁</div><h3>Invisalign-Focused</h3><p>Decision-stage patients who need clarity and friction-free booking.</p></div>
+      <div class="feature-card"><div class="icon-box">👪</div><h3>Family + Elective</h3><p>Family practices that also drive elective revenue and need both pipelines protected.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonial-strip">
+  <div class="container">
+    <div class="testimonial">
+      <div class="testimonial-quote-mark">“</div>
+      <div class="testimonial-body">
+        <p class="testimonial-quote">Implant consult bookings up 38%. We didn't change our marketing, we just stopped letting inquiries sit for hours. Patients want to feel taken care of before they walk in. ChatSales™ does that work in the first text.</p>
+        <div class="testimonial-attr">
+          <span class="testimonial-name">Dr. Priya Shah, DDS</span>
+          <span class="testimonial-role">Owner · Bright Smiles Dental · San Diego, CA</span>
+        </div>
+        <span class="testimonial-result">+38% implant consult bookings</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <h2>Compliance handled. Patients booked. <span class="accent">Practice manager smiling.</span></h2>
+  <p>See ChatSales™ walking through a real dental inquiry, HIPAA-compliant, US-based, BAA ready. 15 minutes, no commitment.</p>
+  <div class="cta-row"><a href="#demo" data-route="demo" class="btn btn-primary">Book a Dental Demo</a></div>
+</section>
+</main>
+</section>
+
+<section class="page-section" data-page="senior">
+<main>
+<header class="page-header">
+  <div class="page-header-bg"></div>
+  <div class="hero-inner">
+    <div class="tag-pill"><div class="live-dot"></div>For Senior Living &amp; Senior Services</div>
+    <h1>Help the family choose with <span class="accent">clarity, comfort and confidence.</span></h1>
+    <p class="hero-sub">The person reaching out to your community isn't usually the senior. It's their adult child, often 40 to 65, working full time, coordinating with siblings, doing the research at 10pm on their phone after a fall or a hospital scare. They don't need a sales pitch. They need a first reply that helps them feel like they're doing right by their parent.</p>
+    <div class="cta-row">
+      <a href="#demo" data-route="demo" class="btn btn-primary">Book a Senior Living Demo</a>
+      <a href="#how" data-route="how" class="btn btn-outline">See How It Works →</a>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="container">
+    <div class="eyebrow">Who you're really talking to</div>
+    <h2>You're not selling to seniors. <span class="accent">You're winning over their adult children.</span></h2>
+    <p class="section-intro">The decision-maker is almost never the resident-to-be. It's a 40-to-65-year-old adult child, often working full time, often coordinating with siblings long-distance, often late at night after a hard family conversation. They aren't comparing communities, they're comparing whoever helps them feel like they're doing this right.</p>
+
+    <div class="feature-grid-4" style="margin-top:36px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
+      <div class="feature-card">
+        <div class="icon-box">🔎</div>
+        <h3>Clarity</h3>
+        <p>Real answers about cost, care level, wait time and visit policy, in writing, in the first conversation. Not vague "let's hop on a call to discuss." Real numbers, on their phone, that night.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon-box">🤝</div>
+        <h3>Comfort</h3>
+        <p>The first sentence acknowledges this is hard. No sales script. No "act now or lose your spot." Just empathy first and the practical conversation when they're ready for it.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon-box">💚</div>
+        <h3>Confidence</h3>
+        <p>Specific tour windows that work around their job. Real names of staff they'll meet. Honest comparisons to similar communities. The feeling that this is the right next step, not just the next step.</p>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top:36px">
+      <p><strong>The adult child making the decision is typically:</strong> 40–65 years old, working full time, often raising their own kids, often coordinating with siblings in other states and almost always researching on their phone late at night after a fall, a hospital scare or a hard family conversation. ChatSales™ is built for that exact window.</p>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--paper)">
+  <div class="container">
+    <div class="eyebrow">Best-fit categories</div>
+    <h2>Proven across senior services. <span class="accent">From tours booked to move-ins closed.</span></h2>
+    <div class="feature-grid-4" style="margin-top:36px">
+      <div class="feature-card"><div class="icon-box">🏡</div><h3>Senior Living Communities</h3><p>Independent, assisted and memory care inquiries from families navigating transition.</p></div>
+      <div class="feature-card"><div class="icon-box">⚖️</div><h3>Elder Law</h3><p>Estate, conservatorship and end-of-life inquiries that need patient, trusted first contact.</p></div>
+      <div class="feature-card"><div class="icon-box">🤝</div><h3>Hospice & Palliative</h3><p>Sensitive, urgent inquiries where empathy in the first message shapes everything after.</p></div>
+      <div class="feature-card"><div class="icon-box">☀️</div><h3>Adult Day Services</h3><p>Family inquiries balancing caregiver fatigue with finding the right fit for a loved one.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonial-strip">
+  <div class="container">
+    <div class="testimonial">
+      <div class="testimonial-quote-mark">“</div>
+      <div class="testimonial-body">
+        <p class="testimonial-quote">Families reach out scared and overwhelmed. The fact that someone responds calmly and quickly, that's why they tour with us instead of the community down the road.</p>
+        <div class="testimonial-attr">
+          <span class="testimonial-name">Sandra Reyes</span>
+          <span class="testimonial-role">Director of Community Relations · Willow Grove Senior Living</span>
+        </div>
+        <span class="testimonial-result">More tours, warmer families</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <h2>When the family chooses you, <span class="accent">it's because they felt seen first.</span></h2>
+  <p>See exactly how the first conversation does that work, the empathy, the clarity and the calm next step that books the tour.</p>
+  <div class="cta-row"><a href="#demo" data-route="demo" class="btn btn-primary">Book a Senior Living Demo</a></div>
+</section>
+</main>
+</section>
+
+<!-- ====================== PRICING ====================== -->
+<section class="page-section" data-page="pricing">
+<main>
+<header class="page-header">
+  <div class="page-header-bg"></div>
+  <div class="hero-inner">
+    <div class="tag-pill"><div class="live-dot"></div>Pricing</div>
+    <h1>Priced to pay for itself. <span class="accent">On the first booked job.</span></h1>
+    <p class="hero-sub">ChatSales™ is for shop owners who already know what a missed lead is worth. If one job is worth $300 or$3,000, your first reply shouldn't be silence.</p>
+  </div>
+</header>
+
+<section class="tool-section" id="justified-value">
+  <div class="container">
+    <div class="tool-eyebrow">Pays For Itself</div>
+    <h2 class="tool-heading">See the exact day ChatSales™ <span class="accent">stops costing money and starts making money.</span></h2>
+    <p class="tool-sub">Type in the after-hours leads slipping through your shop each month, your average job ticket and which plan you'd run. We'll show you the day every month ChatSales™ pays for itself and what's left in your pocket after that. Simple as that.</p>
+
+    <div class="tool-tabs" id="pb-tabs">
+      <button class="tool-tab active" data-preset="plumbing">Plumbing</button>
+      <button class="tool-tab" data-preset="electrical">Electricians</button>
+      <button class="tool-tab" data-preset="pest">Pest Control</button>
+      <button class="tool-tab" data-preset="hvac">HVAC</button>
+    </div>
+
+    <div class="tool-card">
+      <div class="tool-inputs-row cols-3">
+        <div class="tool-input">
+          <label for="pb-leads" title="After-hours calls and form fills your shop currently isn't connecting with">After-hours leads you miss</label>
+          <input type="number" id="pb-leads" value="30" min="1" max="500">
+        </div>
+        <div class="tool-input">
+          <label for="pb-val">Average job ticket</label>
+          <div class="tool-money-input">
+            <span>$</span><input type="number" id="pb-val" value="339" min="50" max="50000">
+          </div>
+        </div>
+        <div class="tool-input">
+          <label for="pb-tier">Which plan</label>
+          <select id="pb-tier">
+            <option value="640">Starter, $640/mo</option>
+            <option value="980" selected>Standard, $980/mo</option>
+            <option value="1650">Pro, $1,650/mo</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="tool-result">
+        <div class="tool-result-card">
+          <div class="tool-result-label">Pays For Itself On Day</div>
+          <div class="tool-result-big" id="pb-day">3</div>
+          <div class="tool-result-sub" id="pb-day-sub">of every month, first week</div>
+        </div>
+        <div class="tool-bars">
+          <div>
+            <div class="tool-bar-label">
+              <span>What ChatSales™ costs you</span>
+              <span class="tool-bar-val" id="pb-cost">$980</span>
+            </div>
+            <div class="tool-bar-track"><div class="tool-bar-fill red" id="pb-bar-cost" style="width:8%"></div></div>
+          </div>
+          <div>
+            <div class="tool-bar-label">
+              <span>What ChatSales™ makes you back</span>
+              <span class="tool-bar-val" id="pb-revenue">$12,750</span>
+            </div>
+            <div class="tool-bar-track"><div class="tool-bar-fill green" id="pb-bar-rev" style="width:100%"></div></div>
+          </div>
+          <div class="tool-net">
+            <span>What you pocket every month</span>
+            <span class="tool-net-val" id="pb-net">+$11,753</span>
+          </div>
+        </div>
+      </div>
+
+      <p class="tool-disclaimer">Math: after-hours leads you miss × your average job ticket - the plan cost = what you pocket every month. Built on the assumption ChatSales™ catches the after-hours leads your shop currently isn't connecting with.</p>
+    </div>
+  </div>
+</section>
+
+<section class="testimonial-strip" style="background:var(--white);padding-top:0">
+  <div class="container">
+    <div class="testimonial">
+      <div class="testimonial-quote-mark">“</div>
+      <div class="testimonial-body">
+        <p class="testimonial-quote">It's the only software in our stack the front desk actually wants to use. It makes their job easier instead of adding another dashboard. And payback was on day 4 of month one, we run the numbers monthly.</p>
+        <div class="testimonial-attr">
+          <span class="testimonial-name">Jessica Wu</span>
+          <span class="testimonial-role">Practice Manager · Pacific Northwest Dental · Seattle, WA</span>
+        </div>
+        <span class="testimonial-result">Day-4 payback, monthly</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-name">Starter</div>
+        <h3>For one-shop crews</h3>
+        <p>Smaller shops that just need every lead answered fast. We text them back, ask a few questions and pass it to you.</p>
+        <a href="#demo" data-route="demo" class="btn btn-outline">Talk to Us</a>
+      </div>
+      <div class="price-card featured">
+        <div class="featured-badge">MOST POPULAR</div>
+        <div class="price-name">Standard</div>
+        <h3>For most working shops</h3>
+        <p>The one most of our customers run on. Every lead answered, sorted hot/warm/cold and dropped on your team with the info they need.</p>
+        <a href="#demo" data-route="demo" class="btn btn-primary">Talk to Us</a>
+      </div>
+      <div class="price-card">
+        <div class="price-name">Pro</div>
+        <h3>For shops that want it dialed in</h3>
+        <p>For owners who want the texts to sound exactly like their best CSR, with tighter scripts and sales-side polish.</p>
+        <a href="#demo" data-route="demo" class="btn btn-outline">Talk to Us</a>
+      </div>
+      <div class="price-card">
+        <div class="price-name">Multi-Shop</div>
+        <h3>For multiple locations</h3>
+        <p>Running two, five or fifty locations? Routing per shop, custom tone per market and one dashboard for the lot.</p>
+        <a href="#demo" data-route="demo" class="btn btn-outline">Talk to Us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container narrow">
+    <div class="callout callout-dark">
+      <p>If one missed lead is worth hundreds or thousands of dollars, your first response should not begin with silence.</p>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <h2>Find the tier that wins for you. <span class="accent">Honest answer in 15 minutes.</span></h2>
+  <p>We'll walk through your numbers and recommend a fit or tell you ChatSales™ isn't right for your business.</p>
+  <div class="cta-row"><a href="#demo" data-route="demo" class="btn btn-primary">Book a Demo</a></div>
+</section>
+</main>
+</section>
+
+<!-- ====================== FAQ ====================== -->
+<section class="page-section" data-page="faq">
+<main>
+<header class="page-header">
+  <div class="page-header-bg"></div>
+  <div class="hero-inner">
+    <div class="tag-pill"><div class="live-dot"></div>Frequently asked questions</div>
+    <h1>What winning operators <span class="accent">ask before they buy.</span></h1>
+    <p class="hero-sub">Direct answers to the questions operators ask before they buy. If yours isn't here, the demo is the fastest way to get it answered.</p>
+  </div>
+</header>
+
+<section style="padding-top:50px">
+  <div class="container">
+    <div class="faq-controls">
+      <div class="faq-search-wrap"><input type="text" id="faq-search" placeholder="Search questions..." autocomplete="off"></div>
+      <div class="faq-categories">
+        <button class="faq-cat active" data-cat="all">All</button>
+        <button class="faq-cat" data-cat="product">Product</button>
+        <button class="faq-cat" data-cat="setup">Setup &amp; Onboarding</button>
+        <button class="faq-cat" data-cat="fit">Fit &amp; Use Cases</button>
+        <button class="faq-cat" data-cat="integrations">Integrations</button>
+        <button class="faq-cat" data-cat="pricing">Pricing &amp; Billing</button>
+        <button class="faq-cat" data-cat="security">Security &amp; Compliance</button>
+      </div>
+    </div>
+
+    <div class="faq-list" id="faq-list">
+      <div class="faq-item" data-cat="product">
+        <div class="faq-q">What is ChatSales™?<div class="faq-toggle">+</div></div>
+        <div class="faq-a">A tool that texts your leads back the second they come in, from a real iPhone number, like a real person. It asks a few quick questions, figures out who's serious and drops the good ones in front of your team.</div>
+      </div>
+      <div class="faq-item" data-cat="product">
+        <div class="faq-q">Is ChatSales™ just a chatbot?<div class="faq-toggle">+</div></div>
+        <div class="faq-a">No. Most chatbots feel like chatbots, the customer knows it, hates it and bounces. ChatSales™ is built to feel like the office texting you back. Same buttons-and-bubbles experience as texting your buddy.</div>
+      </div>
+      <div class="faq-item" data-cat="product">
+        <div class="faq-q">Why does the blue-bubble thing matter?<div class="faq-toggle">+</div></div>
+        <div class="faq-a">Because nobody trusts a shortcode. A blue bubble from a real iPhone number looks like a real person and that's the difference between the customer texting back or ignoring you.</div>
+      </div>
+      <div class="faq-item" data-cat="product">
+        <div class="faq-q">What if a lead texts me from Android?<div class="faq-toggle">+</div></div>
+        <div class="faq-a">No problem. ChatSales™ sends a regular text instead. Same fast reply, same questions, same handoff to your team, just no blue bubble.</div>
+      </div>
+      <div class="faq-item" data-cat="product">
+        <div class="faq-q">Does ChatSales™ replace my team?<div class="faq-toggle">+</div></div>
+        <div class="faq-a">No. Your CSRs and office staff are still doing the work. ChatSales™ just makes sure every lead gets a fast first reply and shows up on your team's desk already sorted, so they spend their time on the live ones.</div>
+      </div>
+      <div class="faq-item" data-cat="product">
+        <div class="faq-q">What happens after hours?<div class="faq-toggle">+</div></div>
+        <div class="faq-a">ChatSales™ answers 24/7. Honestly, that's where most of our customers see the biggest payback, nights and weekends, when your competition is asleep and the customer is shopping around.</div>
+      </div>
+      <div class="faq-item" data-cat="setup">
+        <div class="faq-q">How fast can we go live?<div class="faq-toggle">+</div></div>
+        <div class="faq-a">A couple of days for most shops. We hook up your lead sources, build the script for your trade and run a few test conversations with you before flipping it on.</div>
+      </div>
+      <div class="faq-item" data-cat="setup">
+        <div class="faq-q">Do I need to provide a phone number?<div class="faq-toggle">+</div></div>
+        <div class="faq-a">No. We set up a fresh iPhone number for your shop, no extra charge. If you'd rather use the number your customers already know, we can do that too.</div>
+      </div>
+      <div class="faq-item" data-cat="fit">
+        <div class="faq-q">Which trades and industries fit best?<div class="faq-toggle">+</div></div>
+        <div class="faq-a">Home services (HVAC, plumbing, electrical, pest control, roofing), law firms doing PI and family law intake, dental practices doing implants and cosmetic work and senior living. Basically anywhere a customer is comparing two or three shops and the fastest reply wins the job.</div>
+      </div>
+      <div class="faq-item" data-cat="fit">
+        <div class="faq-q">When is it NOT worth it?<div class="faq-toggle">+</div></div>
+        <div class="faq-a">If your jobs are small-ticket ($20 oil change kind of stuff), if your customers never text or if you're already the only shop in town. Then we're probably not worth the spend and we'll tell you that on the demo.</div>
+      </div>
+      <div class="faq-item" data-cat="integrations">
+        <div class="faq-q">Does it work with my software?<div class="faq-toggle">+</div></div>
+        <div class="faq-a">Yes. We connect to ServiceTitan, Housecall Pro, Jobber, FieldEdge, Workiz, HubSpot, Salesforce, Clio, MyCase, Dentrix, Open Dental and most others. If you're on something weird, we have a workaround that hooks up to just about anything.</div>
+      </div>
+      <div class="faq-item" data-cat="integrations">
+        <div class="faq-q">Can it book the job on the calendar?<div class="faq-toggle">+</div></div>
+        <div class="faq-a">Yes. Customer texts in, ChatSales™ talks them through it and the appointment ends up on your calendar, Calendly, Acuity, Google Calendar, your dispatch software, whatever you use.</div>
+      </div>
+      <div class="faq-item" data-cat="pricing">
+        <div class="faq-q">How much does ChatSales™ cost?<div class="faq-toggle">+</div></div>
+        <div class="faq-a">Depends on how many leads you get and what kind of shop you run. We don't post a sticker price because the real number depends on the answers you'd give us on a 15-minute call. We'll tell you on the demo, no games.</div>
+      </div>
+      <div class="faq-item" data-cat="pricing">
+        <div class="faq-q">Am I locked into a long contract?<div class="faq-toggle">+</div></div>
+        <div class="faq-a">Nope. Starter and Standard are month-to-month, quit any time, no penalty. Pro and Multi-Shop usually go annual because of the custom setup work, but we'll lay it all out for you up front.</div>
+      </div>
+      <div class="faq-item" data-cat="security">
+        <div class="faq-q">Is my customer data safe?<div class="faq-toggle">+</div></div>
+        <div class="faq-a">Yes. Every text is locked down with bank-level encryption, both in transit and stored. We don't sell your data, we don't share it, period.</div>
+      </div>
+      <div class="faq-item" data-cat="security">
+        <div class="faq-q">Is it HIPAA-compliant for dental and senior living?<div class="faq-toggle">+</div></div>
+        <div class="faq-a">Yes, we have a HIPAA-compliant setup for dental, medical and senior living shops and we'll sign the paperwork (the "BAA") that the government wants. Just mention it on the demo.</div>
+      </div>
+    </div>
+
+    <div class="faq-empty" id="faq-empty" style="display:none">
+      <p>No questions match that search. <a href="#demo" data-route="demo" style="color:var(--green-dark);font-weight:500">Ask us directly on a demo</a>.</p>
+    </div>
+
+    <div class="mid-cta">
+      <div class="mid-cta-text">
+        <div class="mid-cta-title">Don't see your question?</div>
+        <div class="mid-cta-sub">The fastest way to get a real answer is 15 minutes with our team, no high-pressure pitch, just your specific situation.</div>
+      </div>
+      <div class="btn-row">
+        <a href="#demo" data-route="demo" class="btn-white">Ask Us On a Demo</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <h2>Still have questions? <span class="accent">Get them answered on a 15-minute demo.</span></h2>
+  <p>15 minutes. Real examples. No high-pressure pitch.</p>
+  <div class="cta-row"><a href="#demo" data-route="demo" class="btn btn-primary">Book a Demo</a></div>
+</section>
+</main>
+</section>
+
+<!-- ====================== DEMO ====================== -->
+<section class="page-section" data-page="demo">
+<main>
+<header class="page-header">
+  <div class="page-header-bg"></div>
+  <div class="hero-inner">
+    <div class="tag-pill"><div class="live-dot"></div>Book a demo</div>
+    <h1>Find out what you'd win. <span class="accent">In 15 minutes.</span></h1>
+    <p class="hero-sub">If your shop runs on inbound leads and your first reply is what wins or loses the job, let's take a look. 15 minutes, real examples on your numbers, no high-pressure pitch.</p>
+  </div>
+</header>
+
+<section class="testimonial-strip" style="padding:0 32px 24px">
+  <div class="container">
+    <div class="testimonial">
+      <div class="testimonial-quote-mark">“</div>
+      <div class="testimonial-body">
+        <p class="testimonial-quote">The demo was the most useful 15 minutes of my month. They showed me exactly where we were losing leads, even before I signed up.</p>
+        <div class="testimonial-attr">
+          <span class="testimonial-name">David Park, Esq.</span>
+          <span class="testimonial-role">Founder · Park Family Law · Portland, OR</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="split">
+      <div>
+        <h2>What you'll walk out with.</h2>
+        <p style="font-size:16px;color:var(--ink-soft);line-height:1.7;margin-top:20px">A real demo of ChatSales™ texting a lead in your industry. A walkthrough of where you're probably losing jobs. A real-world number for what you'd pull back. And a straight answer on whether we're worth the spend.</p>
+        <div class="callout" style="margin-top:32px">
+          <p>If we're not the right fit, we'll tell you straight. Either way, 15 minutes and you'll see exactly where you're leaking jobs.</p>
+        </div>
+        <div style="margin-top:32px">
+          <h4 style="margin-bottom:14px;color:var(--green-dark)">You're probably a good fit if:</h4>
+          <ul class="clean-list" style="margin-top:0">
+            <li>your average job is over $300</li>
+            <li>you get more than 30 leads a month</li>
+            <li>after-hours leads are slipping through the cracks</li>
+            <li>your customers usually call 2–5 shops</li>
+            <li>the first reply makes or breaks the deal</li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <form class="demo-form" onsubmit="event.preventDefault(); alert('Form submission would be wired to your CRM or Calendly here.')">
+          <label for="name">Name</label>
+          <input type="text" id="name" placeholder="First and last name" required>
+
+          <label for="email">Work email</label>
+          <input type="email" id="email" placeholder="you@yourbusiness.com" required>
+
+          <label for="company">Business name</label>
+          <input type="text" id="company" placeholder="Your business or firm">
+
+          <label for="industry">Your industry</label>
+          <select id="industry" required>
+            <option value="">Choose one...</option>
+            <option>Home Services</option>
+            <option>Legal Intake</option>
+            <option>Dental</option>
+            <option>Senior Living / Senior Services</option>
+            <option>Other</option>
+          </select>
+
+          <label for="lead-source">Where do most leads come from?</label>
+          <input type="text" id="lead-source" placeholder="Website forms, Google LSA, calls, referrals...">
+
+          <label for="lead-value">Approximate average lead value</label>
+          <input type="text" id="lead-value" placeholder="e.g., $500, $5,000, varies">
+
+          <label for="leak">Where do you think follow-up breaks down?</label>
+          <textarea id="leak" placeholder="After hours? On weekends? When the office is slammed? Be honest, we've heard it all."></textarea>
+
+          <label for="response">How fast does your team currently respond?</label>
+          <select id="response">
+            <option value="">Choose one...</option>
+            <option>Within 5 minutes</option>
+            <option>15-60 minutes</option>
+            <option>1-4 hours</option>
+            <option>Same day, eventually</option>
+            <option>Next business day or later</option>
+            <option>It varies a lot</option>
+          </select>
+
+          <button type="submit" class="btn btn-primary" style="margin-top:8px">Book My Demo</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <a href="#home" data-route="home" class="logo">Chat<span class="logo-accent">Sales</span><sup class="tm-mark">™</sup></a>
+      <p class="footer-tag">More booked jobs. More closed cases. Proven across home services, legal, dental and senior living.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Product</h4>
+      <a href="#how" data-route="how">How It Works</a>
+      <a href="#pricing" data-route="pricing">Pricing</a>
+    </div>
+    <div class="footer-col">
+      <h4>Industries</h4>
+      <a href="#home-services" data-route="home-services">Home Services</a>
+      <a href="#legal" data-route="legal">Legal Intake</a>
+      <a href="#dental" data-route="dental">Dental</a>
+      <a href="#senior" data-route="senior">Senior Living</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="#faq" data-route="faq">FAQ</a>
+      <a href="#demo" data-route="demo">Book a Demo</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2026 ChatSales™. All rights reserved.</div>
+    <div>Built for businesses where a missed lead is expensive.</div>
+  </div>
+</footer>
+
+<a href="#demo" data-route="demo" class="demo-pill">
+  <span class="demo-pill-dot"></span>
+  Book a Demo
+</a>
+
+<script>
+// ============== SPA Routing ==============
+(function() {
+  const routes = ['home', 'how', 'industries', 'home-services', 'legal', 'dental', 'senior', 'pricing', 'faq', 'demo'];
+  const titles = {
+    'home': 'ChatSales™ | More Booked Jobs. More Closed Cases.',
+    'how': 'How ChatSales™ Works',
+    'industries': 'Industries We Serve | ChatSales™',
+    'home-services': 'ChatSales™ for Home Services',
+    'legal': 'ChatSales™ for Legal Intake',
+    'dental': 'ChatSales™ for Dental Practices',
+    'senior': 'ChatSales™ for Senior Living',
+    'pricing': 'ChatSales™ Pricing',
+    'faq': 'ChatSales™ FAQ',
+    'demo': 'Book a ChatSales™ Demo'
+  };
+
+  const routeToJourney = {
+    'home': 'discover',
+    'how': 'see',
+    'industries': 'see',
+    'home-services': 'see', 'legal': 'see', 'dental': 'see', 'senior': 'see',
+    'pricing': 'fit',
+    'faq': 'fit',
+    'demo': 'book'
+  };
+  const journeyOrder = ['discover', 'see', 'fit', 'book'];
+
+  function updateJourney(route) {
+    const currentStep = routeToJourney[route] || 'discover';
+    const currentIdx = journeyOrder.indexOf(currentStep);
+    document.querySelectorAll('.journey-step').forEach(step => {
+      const stepKey = step.dataset.journey;
+      const stepIdx = journeyOrder.indexOf(stepKey);
+      step.classList.toggle('active', stepIdx === currentIdx);
+      step.classList.toggle('completed', stepIdx < currentIdx);
+    });
+  }
+
+  function showRoute(route) {
+    if (!routes.includes(route)) route = 'home';
+    document.querySelectorAll('.page-section').forEach(s => s.classList.toggle('active', s.dataset.page === route));
+    document.querySelectorAll('.nav-links a, .footer-col a').forEach(a => {
+      const r = a.dataset.route;
+      if (r) a.classList.toggle('active', r === route);
+    });
+    updateJourney(route);
+    if (titles[route]) document.title = titles[route];
+    window.scrollTo(0, 0);
+  }
+
+  document.addEventListener('click', function(e) {
+    const link = e.target.closest('a[data-route]');
+    if (!link) return;
+    e.preventDefault();
+    const route = link.dataset.route;
+    history.pushState({route}, '', '#' + route);
+    showRoute(route);
+  });
+
+  window.addEventListener('popstate', function(e) {
+    const route = (e.state && e.state.route) || (location.hash.replace('#','')) || 'home';
+    showRoute(route);
+  });
+
+  document.addEventListener('click', function(e) {
+    const item = e.target.closest('.faq-item');
+    if (item) item.classList.toggle('open');
+  });
+
+  const initial = location.hash.replace('#','') || 'home';
+  showRoute(initial);
+})();
+
+// ============== Helpers ==============
+function fmt$(n) { return '$' + Math.round(n).toLocaleString(); }
+function bump(el) { if (!el) return; el.classList.remove('bump'); void el.offsetWidth; el.classList.add('bump'); }
+
+// ============== TRADE DATASET ==============
+// National conservative home-services data, used by both tools as presets.
+const TRADES = {
+  plumbing:   { label: 'Plumbing',     avgJob: 339, inquiries: 65, missed: 35, booking: 65 }, // 36 leads + 29 calls
+  electrical: { label: 'Electricians', avgJob: 350, inquiries: 40, missed: 30, booking: 60 }, // 23 leads + 17 calls
+  pest:       { label: 'Pest Control', avgJob: 190, inquiries: 31, missed: 25, booking: 55 }, // 19 leads + 12 calls
+  hvac:       { label: 'HVAC',         avgJob: 350, inquiries: 89, missed: 35, booking: 65 }  // 50 leads + 39 calls
+};
+
+// ============== HOME CALCULATOR (loss / recoverable revenue) ==============
+(function() {
+  const $ = id => document.getElementById(id);
+  if (!$('calc-job')) return;
+
+  const jobIn  = $('calc-job');
+  const inqIn  = $('calc-inquiries');
+  const missIn = $('calc-missed');
+  const bookIn = $('calc-book');
+
+  function update() {
+    const job = +jobIn.value || 0;
+    const inq = +inqIn.value || 0;
+    const missed = (+missIn.value || 0) / 100;
+    const book = (+bookIn.value || 0) / 100;
+
+    // Recoverable inquiries × booking rate = jobs won back
+    const jobsRecoverable = inq * missed * book;
+    const monthly = jobsRecoverable * job;
+    const annual = monthly * 12;
+    const daily = monthly / 30;
+
+    $('calc-big').textContent = fmt$(monthly);
+    bump($('calc-big'));
+    $('calc-jobs').textContent = jobsRecoverable.toFixed(1);
+    $('calc-annual').textContent = fmt$(annual);
+    $('calc-daily').textContent = fmt$(daily);
+    $('calc-net').textContent = fmt$(monthly) + ' / mo';
+
+    // Bar widths, scaled relative to a reasonable upper bound
+    const maxMonthly = 15000;
+    $('calc-bar-jobs').style.width = Math.min(100, (jobsRecoverable / 30) * 100) + '%';
+    $('calc-bar-annual').style.width = Math.min(100, (annual / (maxMonthly * 12)) * 100) + '%';
+    $('calc-bar-daily').style.width = Math.min(100, (daily / 600) * 100) + '%';
+  }
+
+  function applyPreset(name) {
+    const t = TRADES[name];
+    if (!t) return;
+    jobIn.value = t.avgJob;
+    inqIn.value = t.inquiries;
+    missIn.value = t.missed;
+    bookIn.value = t.booking;
+    update();
+  }
+
+  [jobIn, inqIn, missIn, bookIn].forEach(el => el.addEventListener('input', update));
+  document.querySelectorAll('#calc-tabs .tool-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('#calc-tabs .tool-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      applyPreset(tab.dataset.preset);
+    });
+  });
+  applyPreset('plumbing');
+})();
+
+// ============== RESPONSE TIME BENCHMARK ==============
+(function() {
+  const $ = id => document.getElementById(id);
+  if (!$('bench-input')) return;
+
+  // Industry thresholds in minutes
+  const INDUSTRIES = {
+    'home-services': { topQ: 5,   median: 240,  slow: 1440, topLabel: 'Under 5 min',  name: 'home services' },
+    'legal':         { topQ: 30,  median: 480,  slow: 2880, topLabel: 'Under 30 min', name: 'legal intake' },
+    'dental':        { topQ: 60,  median: 360,  slow: 1440, topLabel: 'Under 1 hr',   name: 'dental practices' },
+    'senior':        { topQ: 120, median: 720,  slow: 2880, topLabel: 'Under 2 hr',   name: 'senior living' }
+  };
+  let active = 'home-services';
+
+  // Log scale 1 min to 2880 min mapped to 0-100%, matches the visual axis ticks.
+  function minToPct(min) {
+    const clamped = Math.max(1, Math.min(min, 2880));
+    return (Math.log(clamped) / Math.log(2880)) * 100;
+  }
+
+  function minToLabel(min) {
+    if (min < 60)    return Math.round(min) + ' min';
+    if (min < 1440)  return (min / 60).toFixed(min < 600 ? 1 : 0) + ' hr';
+    return (min / 1440).toFixed(min < 2880 ? 1 : 0) + ' day' + (min >= 2880 ? 's' : '');
+  }
+
+  function update() {
+    const minutes = (+$('bench-input').value || 0) * (+$('bench-unit').value || 1);
+    const data = INDUSTRIES[active];
+
+    // Marker position
+    $('bench-marker').style.left = minToPct(minutes) + '%';
+
+    // Plain-language buckets, no "percentile" or "quartile" anywhere.
+    let perc, lift, bad;
+    if (minutes <= data.topQ)              { perc = 'Fastest in the game';   lift = '+5% more';   bad = false; }
+    else if (minutes <= data.median * 0.5) { perc = 'Faster than most';      lift = '+15% more';  bad = false; }
+    else if (minutes <= data.median)       { perc = 'Right in the middle';   lift = '+30% more';  bad = false; }
+    else if (minutes <= data.slow)         { perc = 'Slower than most';      lift = '+47% more';  bad = true; }
+    else                                   { perc = 'Way too slow';          lift = '+120% more'; bad = true; }
+
+    $('bench-percentile').textContent = perc;
+    $('bench-top').textContent = data.topLabel;
+    $('bench-lift').textContent = lift;
+
+    let verdict;
+    if (minutes <= data.topQ) {
+      verdict = `You're the fastest game in town for ${data.name}. You're already beating most of your competition to the punch, keep this pace and you'll keep winning the jobs.`;
+    } else if (minutes <= data.median) {
+      verdict = `You're in the middle of the pack for ${data.name}. The fastest shops hit ${data.topLabel.toLowerCase()}, close that gap and you start booking a lot more of the jobs you're already paying to get in front of.`;
+    } else if (minutes <= data.slow) {
+      verdict = `This is the leak. By the time you reply, the lead has already heard from somebody faster. The shops winning your jobs reply in ${data.topLabel.toLowerCase()} and that's the fix.`;
+    } else {
+      verdict = `By the time you get back to people, they've already hired somebody else. This is the single biggest hole in your shop right now and the easiest one to plug.`;
+    }
+    const verdictEl = $('bench-verdict');
+    verdictEl.textContent = verdict;
+    verdictEl.classList.toggle('bench-bad', bad);
+  }
+
+  document.querySelectorAll('#bench-tabs .tool-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('#bench-tabs .tool-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      active = tab.dataset.bench;
+      update();
+    });
+  });
+  $('bench-input').addEventListener('input', update);
+  $('bench-unit').addEventListener('change', update);
+
+  // ===== Drag-to-set on the bench bar (mouse + touch) =====
+  const bar = document.querySelector('#response-benchmark .bench-bar');
+  if (bar) {
+    let dragging = false;
+
+    // Inverse of minToPct: given a 0-100% bar position, return minutes (log scale).
+    function pctToMin(pct) {
+      pct = Math.max(0, Math.min(100, pct));
+      // Same log domain as the axis: 1 min → 2880 min (48 hr)
+      return Math.max(1, Math.round(Math.exp((pct / 100) * Math.log(2880))));
+    }
+
+    function setFromClientX(clientX) {
+      const rect = bar.getBoundingClientRect();
+      const pct = ((clientX - rect.left) / rect.width) * 100;
+      const min = pctToMin(pct);
+
+      // Snap to readable unit so the number doesn't look weird
+      // (e.g. "73 min" → switch to hours; "12 min" stays minutes).
+      if (min >= 90) {
+        $('bench-unit').value = '60';
+        $('bench-input').value = Math.max(1, Math.round(min / 60));
+      } else {
+        $('bench-unit').value = '1';
+        $('bench-input').value = min;
+      }
+      update();
+    }
+
+    function startDrag(e) {
+      dragging = true;
+      bar.classList.add('is-dragging');
+      const x = e.touches ? e.touches[0].clientX : e.clientX;
+      setFromClientX(x);
+      e.preventDefault();
+    }
+    function moveDrag(e) {
+      if (!dragging) return;
+      const x = e.touches ? e.touches[0].clientX : e.clientX;
+      setFromClientX(x);
+      e.preventDefault();
+    }
+    function endDrag() {
+      if (!dragging) return;
+      dragging = false;
+      bar.classList.remove('is-dragging');
+    }
+
+    bar.addEventListener('mousedown', startDrag);
+    document.addEventListener('mousemove', moveDrag);
+    document.addEventListener('mouseup', endDrag);
+    bar.addEventListener('touchstart', startDrag, { passive: false });
+    document.addEventListener('touchmove', moveDrag, { passive: false });
+    document.addEventListener('touchend', endDrag);
+    document.addEventListener('touchcancel', endDrag);
+  }
+
+  update();
+})();
+
+// ============== JUSTIFIED VALUE / PAYBACK TOOL ==============
+(function() {
+  const $ = id => document.getElementById(id);
+  if (!$('pb-leads')) return;
+
+  const leadsIn = $('pb-leads');
+  const valIn = $('pb-val');
+  const tierIn = $('pb-tier');
+
+  function ordinalSuffix(n) {
+    const s = ['th','st','nd','rd'], v = n % 100;
+    return n + (s[(v - 20) % 10] || s[v] || s[0]);
+  }
+
+  function update() {
+    const leads = +leadsIn.value || 0;
+    const value = +valIn.value || 0;
+    const cost  = +tierIn.value;
+
+    // After-hours leads the shop currently misses × avg job ticket = monthly
+    // revenue ChatSales would recover. Subtract plan cost = what they pocket.
+    const monthlyRevenue = leads * value;
+    const net = monthlyRevenue - cost;
+
+    // Day of month where cumulative daily revenue crosses cost
+    const dailyRev = monthlyRevenue / 30;
+    let day = dailyRev > 0 ? Math.ceil(cost / dailyRev) : 99;
+    day = Math.max(1, Math.min(day, 30));
+
+    $('pb-cost').textContent = fmt$(cost);
+    $('pb-revenue').textContent = fmt$(monthlyRevenue);
+    $('pb-net').textContent = (net >= 0 ? '+' : '') + fmt$(net);
+    $('pb-net').style.color = net >= 0 ? 'var(--green-dark)' : 'var(--red)';
+
+    const dayEl = $('pb-day');
+    dayEl.textContent = day;
+    bump(dayEl);
+
+    $('pb-day-sub').textContent =
+      day === 1 ? 'of every month, instant payback' :
+      day <= 7  ? 'of every month, first week' :
+      day < 30  ? 'of every month' : 'requires more leads to pay back';
+
+    // Bar widths
+    const max = Math.max(cost, monthlyRevenue, 1);
+    $('pb-bar-cost').style.width = (cost / max * 100) + '%';
+    $('pb-bar-rev').style.width = (monthlyRevenue / max * 100) + '%';
+  }
+
+  function applyPreset(name) {
+    const t = TRADES[name];
+    if (!t) return;
+    // After-hours leads MISSED per month = total after-hours inquiries × the
+    // typical miss rate for that trade. Avg ticket comes from the trade table.
+    valIn.value = t.avgJob;
+    leadsIn.value = Math.max(1, Math.round(t.inquiries * (t.missed / 100)));
+    update();
+  }
+
+  [leadsIn, valIn, tierIn].forEach(el => el.addEventListener('input', update));
+  document.querySelectorAll('#pb-tabs .tool-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('#pb-tabs .tool-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      applyPreset(tab.dataset.preset);
+    });
+  });
+  update();
+})();
+
+// ============== CONVERSATION SIMULATOR ==============
+(function() {
+  // Each scenario has:
+  //   smallTalk: ordered list of {match: RegExp, reply: string}. First match wins.
+  //              Small talk does NOT advance the qualifying script, feels natural.
+  //   followups: scripted qualifying questions that advance one-at-a-time.
+  //   fallback:  used when nothing matches and the script has run out.
+  //   score:     final hot/warm/cold scoring shown when followups complete.
+  const SIM = {
+    hvac: {
+      smallTalk: [
+        { match: /\b(where|what city|where are you|location|located|based|town|area)\b/i,
+          reply: "We're based in Austin and our techs cover most of central Texas. What part of town are you in? That helps me figure out who can swing by fastest." },
+        { match: /\b(weather|hot|heat ?wave|cold|temperature|degree|raining|storm|outside|nice out)\b/i,
+          reply: "Ha, yeah, this heatwave's been brutal. That's actually why we're slammed today, units giving up left and right. What's yours doing?" },
+        { match: /\b(news|today|happening|going on out|crazy week|busy day)\b/i,
+          reply: "Honestly? Phones ringing off the hook with this heat. But you got me, let's get your AC sorted." },
+        { match: /\b(bot|robot|are you (a )?real|are you human|is this real|automated|ai\b|machine)\b/i,
+          reply: "Fair question. I'm a fast text assistant, I get you sorted before our dispatcher picks up. A real person's on the line too if you want, just say the word." },
+        { match: /\b(thanks|thank you|appreciate|ty\b)\b/i,
+          reply: "Anytime, that's what we're here for. Anything else I can sort out?" },
+        { match: /\b(cost|price|expensive|how much|charge|fee|estimate|quote)\b/i,
+          reply: "Honest answer, depends what's wrong. No charge to come take a look. Want me to get you on the schedule?" },
+        { match: /\b(emergency|asap|right now|today|urgent|right away|immediately)\b/i,
+          reply: "Got it, emergencies jump the queue. We've got openings later today. What's the address?" },
+        { match: /^(hi|hey|hello|yo\b|sup\b|howdy)/i,
+          reply: "Hey! Thanks for reaching out. What's the AC doing?" }
+      ],
+      followups: [
+        "Got it, how old is the unit, roughly? And is it the whole house or just one zone?",
+        "Okay. Quick one: do you know the brand or roughly when it was installed?",
+        "Makes sense. Last thing, would today between 1–3pm work or is first thing tomorrow morning better?",
+        "Perfect. I've got you on the books. A tech will text you 30 min before they head over. ✓"
+      ],
+      fallback: "Got it. Anything else you want to add before I get you on the schedule?",
+      score: { tier: 'hot', label: 'HOT', summary: 'Emergency HVAC repair · same-day booked · est. $400–$890 ticket' }
+    },
+
+    legal: {
+      smallTalk: [
+        { match: /\b(where|what city|where are you|location|located|based|county|state)\b/i,
+          reply: "Our firm is in Chicago, but we handle cases across Illinois and Indiana. Where did this happen? That matters for which court it goes to." },
+        { match: /\b(weather|hot|cold|raining|storm|snow|outside|nice out)\b/i,
+          reply: "Lake-effect snow doing its thing this week. Roads are a mess, actually a big reason we're seeing extra calls. Tell me what happened." },
+        { match: /\b(news|today|happening|going on)\b/i,
+          reply: "Yeah, tough week in the news. I get why this feels heavy. Take your time, when you're ready, tell me what happened." },
+        { match: /\b(bot|robot|are you (a )?real|are you human|is this real|automated|ai\b)\b/i,
+          reply: "Good question. I'm a quick intake assistant, I gather the basics so the right attorney can call you back fast. An actual paralegal can jump in any moment if you'd prefer." },
+        { match: /\b(thanks|thank you|appreciate|ty\b)\b/i,
+          reply: "Of course. You're in good hands. Anything else you want me to pass along?" },
+        { match: /\b(cost|price|expensive|how much|charge|fee|retainer)\b/i,
+          reply: "PI cases like yours are usually no-fee-unless-we-win. The consult itself is free. Want to set that up?" },
+        { match: /\b(scared|nervous|worried|anxious|overwhelmed|stressed)\b/i,
+          reply: "Totally understandable, most folks calling us feel exactly that way. Take a breath. We'll walk through it together, one step at a time." },
+        { match: /^(hi|hey|hello)/i,
+          reply: "Hi, thanks for reaching out. I want to get you connected to the right person fast. What's going on?" }
+      ],
+      followups: [
+        "I'm really sorry you're dealing with that. To get you with the right attorney fast, was anyone injured and was a police report filed?",
+        "Got it. And roughly when did this happen, within the last few days or longer ago?",
+        "Thanks for sharing that. The attorney handling intake today is available for a 15-min call. Could I grab your best phone number?",
+        "Perfect. You're scheduled for a consult call at 2pm today. The attorney will call you directly."
+      ],
+      fallback: "Got it. Want me to have the attorney reach out so you can talk it through directly?",
+      score: { tier: 'hot', label: 'HOT', summary: 'PI inquiry · recent · ready for consult · attorney scheduled' }
+    },
+
+    dental: {
+      smallTalk: [
+        { match: /\b(where|what city|where are you|location|located|based|near me)\b/i,
+          reply: "We're right off Mission Bay in San Diego, easy parking, ground floor. Where are you coming from? I can give you the best route." },
+        { match: /\b(weather|hot|cold|raining|sunny|outside|nice out)\b/i,
+          reply: "Perfect San Diego day, as usual. Hardest part of working here is staying inside. Speaking of, tell me a bit about what brought you in." },
+        { match: /\b(news|today|happening)\b/i,
+          reply: "Slow news day on our end, busy chair though! Anyway, you reached out about implants, tell me what's going on." },
+        { match: /\b(bot|robot|are you (a )?real|are you human|is this real|automated|ai\b)\b/i,
+          reply: "Honest answer: I'm a friendly assistant that gets your basics down so Dr. Shah can give you a real answer fast. A team member can take over any time, just say." },
+        { match: /\b(thanks|thank you|appreciate|ty\b)\b/i,
+          reply: "Of course, happy to help. Anything else you want to know before we pick a time?" },
+        { match: /\b(cost|price|expensive|how much|charge|fee|insurance|financing)\b/i,
+          reply: "Implants run a range depending on what you need. We do free consults and we have financing options that work for almost any budget. Want to come in and get a real number?" },
+        { match: /\b(scared|nervous|worried|anxious|afraid|hate the dentist)\b/i,
+          reply: "Totally normal, we hear it every day. Dr. Shah is famous for going slow and being honest. Promise it's not as scary as you're picturing." },
+        { match: /^(hi|hey|hello)/i,
+          reply: "Hi! Thanks for reaching out. What were you hoping to learn about?" }
+      ],
+      followups: [
+        "Great, implants are one of our specialties. To give you a clearer picture: are we talking about one tooth, a few or full-arch?",
+        "Got it. And is this from a recent issue or something you've been thinking about for a while?",
+        "Makes sense. We offer free consults, Dr. Shah has openings Thursday afternoon or Saturday morning. Which works?",
+        "Perfect. You're booked Thursday at 2:30pm. We'll text a confirmation and intake form."
+      ],
+      fallback: "Got it. Anything else you'd like me to flag for Dr. Shah before the consult?",
+      score: { tier: 'hot', label: 'HOT', summary: 'Implant consult · ready to book · est. $4K–$12K treatment plan' }
+    },
+
+    senior: {
+      smallTalk: [
+        { match: /\b(where|what city|where are you|location|located|based|nearby)\b/i,
+          reply: "We're Willow Grove, just off the highway in west Phoenix, easy to get to and we have plenty of guest parking. Where are you coming from?" },
+        { match: /\b(weather|hot|cold|raining|storm|outside|nice out)\b/i,
+          reply: "Beautiful day here actually, gardens are in full bloom. Lots of folks tour in this weather. Tell me a bit about your situation when you're ready." },
+        { match: /\b(news|today|happening|hard week|stressful|busy)\b/i,
+          reply: "It's a lot, I know. A lot of families come to us during weeks like this. Take your time. When you're ready, tell me about your loved one." },
+        { match: /\b(bot|robot|are you (a )?real|are you human|is this real|automated|ai\b)\b/i,
+          reply: "Good question, I'm a friendly assistant here to help you get the right answers without waiting. A real community advisor can join us any time, just let me know." },
+        { match: /\b(thanks|thank you|appreciate|ty\b)\b/i,
+          reply: "You're very welcome. This is a hard process and we're glad to help carry some of it." },
+        { match: /\b(cost|price|expensive|how much|charge|fee|afford|medicare|insurance)\b/i,
+          reply: "Honest answer: it depends on care level. We can walk through it on a tour and we work with families on payment options most communities don't. Want to come visit?" },
+        { match: /\b(scared|nervous|worried|anxious|overwhelmed|hard|sad|guilty)\b/i,
+          reply: "I hear you andI want you to know that feeling is completely normal. You're doing right by them just by looking. Let's go slow together." },
+        { match: /^(hi|hey|hello)/i,
+          reply: "Hi, I'm so glad you reached out. Whenever you're ready, tell me a little about your situation." }
+      ],
+      followups: [
+        "I hear you. That's a lot to navigate. Can you tell me a little about your mom, is she living on her own now or with family?",
+        "Thank you for sharing that. Is there a current safety concern or are you planning ahead for the next few months?",
+        "That helps a lot. Our community has tours available this week, would it help to come see the space, even just to get a feel for it?",
+        "Wonderful. I have you down for Thursday at 11am. Don't worry about being prepared, just come as you are."
+      ],
+      fallback: "Thank you for sharing that. Anything else you'd like me to know before the tour?",
+      score: { tier: 'hot', label: 'HOT', summary: 'Family inquiry · active need · tour booked · warm handoff' }
+    }
+  };
+
+  let currentScenario = 'hvac';
+  let scriptStep = 0;
+  let conversationDone = false;
+  const body = document.getElementById('sim-body');
+  const input = document.getElementById('sim-input');
+  const sendBtn = document.getElementById('sim-send');
+  const scoreBar = document.getElementById('sim-score');
+  if (!body) return;
+
+  function addBubble(text, who) {
+    const bubble = document.createElement('div');
+    bubble.className = 'sim-bubble ' + who;
+    bubble.textContent = text;
+    body.appendChild(bubble);
+    body.scrollTop = body.scrollHeight;
+  }
+  function showTyping() {
+    const t = document.createElement('div');
+    t.className = 'sim-bubble typing';
+    t.id = 'typing-indicator';
+    t.innerHTML = '<span></span><span></span><span></span>';
+    body.appendChild(t);
+    body.scrollTop = body.scrollHeight;
+  }
+  function hideTyping() { const t = document.getElementById('typing-indicator'); if (t) t.remove(); }
+
+  // Try small-talk match first, feels natural, doesn't advance the script.
+  function matchSmallTalk(text, scenario) {
+    const data = SIM[scenario];
+    if (!data || !data.smallTalk) return null;
+    for (const item of data.smallTalk) {
+      if (item.match.test(text)) return item.reply;
+    }
+    return null;
+  }
+
+  function resetSim(scenario) {
+    currentScenario = scenario;
+    scriptStep = 0;
+    conversationDone = false;
+    body.innerHTML = '<div class="sim-timestamp">Today</div>';
+    scoreBar.style.display = 'none';
+    input.disabled = false; sendBtn.disabled = false;
+    input.value = '';
+    input.placeholder = 'Ask anything, "what city are you in?", "how\'s the weather?" or describe the problem...';
+    const greeting = document.querySelector('.sim-scenario[data-scenario="' + scenario + '"]').dataset.greeting;
+    setTimeout(() => addBubble(greeting, 'us'), 250);
+  }
+
+  async function sendMessage() {
+    const text = input.value.trim();
+    if (!text || conversationDone) return;
+    input.value = ''; input.disabled = true; sendBtn.disabled = true;
+    addBubble(text, 'them');
+    await new Promise(r => setTimeout(r, 380));
+    showTyping();
+    await new Promise(r => setTimeout(r, 900 + Math.random() * 700));
+    hideTyping();
+
+    // 1. Small talk takes priority, keeps the convo feeling human.
+    const chitChat = matchSmallTalk(text, currentScenario);
+    if (chitChat) {
+      addBubble(chitChat, 'us');
+      input.disabled = false; sendBtn.disabled = false; input.focus();
+      return;
+    }
+
+    // 2. Otherwise advance the qualifying script.
+    const data = SIM[currentScenario];
+    if (scriptStep < data.followups.length) {
+      addBubble(data.followups[scriptStep], 'us');
+      scriptStep++;
+    } else {
+      addBubble(data.fallback, 'us');
+    }
+
+    // 3. When the script is done, drop the scoring badge.
+    if (scriptStep >= data.followups.length) {
+      conversationDone = true;
+      const score = data.score;
+      document.getElementById('sim-score-badge').className = 'sim-score-badge ' + score.tier;
+      document.getElementById('sim-score-badge').textContent = score.label;
+      document.getElementById('sim-score-summary').textContent = score.summary;
+      scoreBar.style.display = 'flex';
+      input.placeholder = 'Conversation complete · Pick another scenario';
+    } else {
+      input.disabled = false; sendBtn.disabled = false; input.focus();
+    }
+  }
+
+  document.querySelectorAll('.sim-scenario').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.sim-scenario').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      resetSim(btn.dataset.scenario);
+    });
+  });
+  sendBtn.addEventListener('click', sendMessage);
+  input.addEventListener('keydown', e => { if (e.key === 'Enter') sendMessage(); });
+  resetSim('hvac');
+})();
+
+// ============== FAQ search + categories ==============
+(function() {
+  const list = document.getElementById('faq-list');
+  if (!list) return;
+  const search = document.getElementById('faq-search');
+  const cats = document.querySelectorAll('.faq-cat');
+  const empty = document.getElementById('faq-empty');
+  let activeCat = 'all';
+  function filter() {
+    const q = (search.value || '').toLowerCase().trim();
+    let shown = 0;
+    list.querySelectorAll('.faq-item').forEach(item => {
+      const cat = item.dataset.cat;
+      const txt = item.textContent.toLowerCase();
+      const matchCat = activeCat === 'all' || cat === activeCat;
+      const matchQ = !q || txt.includes(q);
+      const show = matchCat && matchQ;
+      item.classList.toggle('hidden', !show);
+      if (show) shown++;
+    });
+    if (empty) empty.style.display = shown === 0 ? 'block' : 'none';
+  }
+  cats.forEach(c => c.addEventListener('click', () => {
+    cats.forEach(x => x.classList.remove('active'));
+    c.classList.add('active');
+    activeCat = c.dataset.cat;
+    filter();
+  }));
+  search.addEventListener('input', filter);
+})();
+</script>
+</body>
+</html>
