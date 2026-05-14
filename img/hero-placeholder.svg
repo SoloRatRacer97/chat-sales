@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2560 900" preserveAspectRatio="xMidYMid slice">
+  <rect width="2560" height="900" fill="#eef0ee"/>
+  <circle cx="2120" cy="180" r="440" fill="#c5ddc6" opacity="0.55"/>
+  <circle cx="320" cy="800" r="340" fill="#40a648" opacity="0.10"/>
+  <circle cx="1820" cy="720" r="200" fill="#89181c" opacity="0.06"/>
+  <path d="M0 640 Q 640 540 1280 630 T 2560 590 V900 H0 Z" fill="#40a648" opacity="0.08"/>
+  <path d="M0 760 Q 720 690 1440 760 T 2560 720 V900 H0 Z" fill="#3d7840" opacity="0.06"/>
+  <text x="1280" y="470" font-family="Inter, Arial, sans-serif" font-size="36" fill="#6b6b6b" opacity="0.38" text-anchor="middle" letter-spacing="8">HERO IMAGE PLACEHOLDER</text>
+</svg>
