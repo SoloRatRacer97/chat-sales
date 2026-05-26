@@ -274,11 +274,6 @@ section.tight { padding: 60px 32px; }
   position: relative;
   overflow: hidden;
   background-color: var(--white);
-  background-image:
-    linear-gradient(rgba(255,255,255,0.80), rgba(255,255,255,0.88)),
-    var(--hero-img);
-  background-size: cover;
-  background-position: center;
 }
 .hero-bg { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
 .hero-bg::before {
@@ -300,6 +295,26 @@ section.tight { padding: 60px 32px; }
   border-radius: 50%;
 }
 .hero-inner { width: 100%; max-width: 1180px; margin: 0 auto; position: relative; z-index: 1; }
+.hero .hero-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(340px, 1.05fr);
+  align-items: center;
+  gap: clamp(30px, 5vw, 70px);
+}
+.hero-copy { min-width: 0; }
+.hero-visual {
+  justify-self: end;
+  width: min(100%, 560px);
+  margin-right: clamp(-36px, -2vw, 0px);
+}
+.hero-visual img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid rgba(26, 26, 26, 0.06);
+  border-radius: 32px;
+  box-shadow: 0 32px 80px rgba(61, 120, 64, 0.18);
+}
 
 .tag-pill {
   display: inline-flex;
@@ -2397,6 +2412,9 @@ footer.site-footer {
     min-height: 60vh;
   }
   .hero { padding: 80px 20px 60px; }
+  .hero .hero-inner { grid-template-columns: 1fr; gap: 34px; }
+  .hero-visual { justify-self: center; width: min(100%, 620px); margin-right: 0; }
+  .hero-visual img { border-radius: 24px; }
   .page-header { padding: 80px 20px 50px; }
   .split { grid-template-columns: 1fr; gap: 36px; }
   .footer-inner { grid-template-columns: 1fr 1fr; }
@@ -2411,6 +2429,7 @@ footer.site-footer {
   .step { flex-direction: column; gap: 12px; }
   .step-num { font-size: 32px; min-width: auto; }
   .tool-header { flex-direction: column; gap: 16px; }
+  .hero-visual img { border-radius: 18px; }
 }
 </style>
 </head>
@@ -2460,15 +2479,20 @@ footer.site-footer {
 <header class="hero">
   <div class="hero-bg"></div>
   <div class="hero-inner">
-    <div class="tag-pill">
-      <div class="live-dot"></div>
-      Built for shops where one missed lead is real money
+    <div class="hero-copy">
+      <div class="tag-pill">
+        <div class="live-dot"></div>
+        Built for shops where one missed lead is real money
+      </div>
+      <h1>More booked jobs. More closed cases. <span class="accent">Every single week.</span></h1>
+      <p class="hero-sub">ChatSales™ texts your leads back the second they come in, from a real iPhone number, like a real person. It asks the right questions, sorts the hot ones from the cold ones and drops them on your team while your competition is still typing their follow-up email.</p>
+      <div class="cta-row">
+        <a href="#demo" data-route="demo" class="btn btn-primary">Book a Demo</a>
+        <a href="#how" data-route="how" class="btn btn-outline">See How It Works →</a>
+      </div>
     </div>
-    <h1>More booked jobs. More closed cases. <span class="accent">Every single week.</span></h1>
-    <p class="hero-sub">ChatSales™ texts your leads back the second they come in, from a real iPhone number, like a real person. It asks the right questions, sorts the hot ones from the cold ones and drops them on your team while your competition is still typing their follow-up email.</p>
-    <div class="cta-row">
-      <a href="#demo" data-route="demo" class="btn btn-primary">Book a Demo</a>
-      <a href="#how" data-route="how" class="btn btn-outline">See How It Works →</a>
+    <div class="hero-visual">
+      <img src="img/home-hero-chat-sales.png" alt="ChatSales iMessage conversation mockup with lead scoring and booked dispatch details">
     </div>
   </div>
 </header>
