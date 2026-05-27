@@ -1,22 +1,30 @@
 # ChatSales Landing Page
 
-Static ChatSales marketing site for Vercel hosting.
+Next.js App Router marketing site for Vercel hosting.
 
 ## Local Preview
 
 ```sh
-python3 -m http.server 4173
+npm install
+npm run dev
 ```
 
-Open `http://127.0.0.1:4173`.
+Open `http://127.0.0.1:3000`.
+
+## Checks
+
+```sh
+npm run lint
+npm run build
+```
 
 ## Vercel
 
 Import this repository directly in Vercel.
 
-- Framework preset: `Other`
+- Framework preset: `Next.js`
 - Root directory: `.`
-- Build command: leave blank
+- Build command: `npm run build`
 - Output directory: leave blank
 
-The site is served from `index.html`; assets live under `img/`.
+Assets live under `public/img/`.
