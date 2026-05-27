@@ -312,6 +312,10 @@ section.tight { padding: 60px 32px; }
 }
 .page-header.with-visual .how-hero-visual,
 .page-header.with-visual .industries-hero-visual,
+.page-header.with-visual .home-services-hero-visual,
+.page-header.with-visual .legal-hero-visual,
+.page-header.with-visual .dental-hero-visual,
+.page-header.with-visual .senior-hero-visual,
 .page-header.with-visual .demo-hero-visual {
   width: min(58vw, 700px);
   margin-right: clamp(-96px, -5vw, -56px);
@@ -319,6 +323,13 @@ section.tight { padding: 60px 32px; }
 .page-header.with-visual .pricing-hero-visual {
   width: min(55.1vw, 665px);
   margin-right: clamp(-96px, -5vw, -56px);
+}
+.page-header.with-visual .home-services-hero-visual,
+.page-header.with-visual .legal-hero-visual,
+.page-header.with-visual .dental-hero-visual,
+.page-header.with-visual .senior-hero-visual {
+  width: min(48vw, 560px);
+  margin-right: clamp(-72px, -4vw, -40px);
 }
 .hero-copy { min-width: 0; }
 .hero-visual {
@@ -2421,6 +2432,10 @@ footer.site-footer {
   .page-header.with-visual .hero-inner { grid-template-columns: 1fr; gap: 34px; }
   .page-header.with-visual .how-hero-visual,
   .page-header.with-visual .industries-hero-visual,
+  .page-header.with-visual .home-services-hero-visual,
+  .page-header.with-visual .legal-hero-visual,
+  .page-header.with-visual .dental-hero-visual,
+  .page-header.with-visual .senior-hero-visual,
   .page-header.with-visual .demo-hero-visual {
     justify-self: center;
     width: min(100%, 720px);
@@ -2429,6 +2444,13 @@ footer.site-footer {
   .page-header.with-visual .pricing-hero-visual {
     justify-self: center;
     width: min(95%, 684px);
+    margin-right: 0;
+  }
+  .page-header.with-visual .home-services-hero-visual,
+  .page-header.with-visual .legal-hero-visual,
+  .page-header.with-visual .dental-hero-visual,
+  .page-header.with-visual .senior-hero-visual {
+    width: min(92%, 580px);
     margin-right: 0;
   }
 }
@@ -2451,8 +2473,16 @@ footer.site-footer {
   .page-header.with-visual .hero-inner { grid-template-columns: 1fr; gap: 34px; }
   .page-header.with-visual .how-hero-visual,
   .page-header.with-visual .industries-hero-visual,
+  .page-header.with-visual .home-services-hero-visual,
+  .page-header.with-visual .legal-hero-visual,
+  .page-header.with-visual .dental-hero-visual,
+  .page-header.with-visual .senior-hero-visual,
   .page-header.with-visual .demo-hero-visual { width: min(100%, 680px); margin-right: 0; }
   .page-header.with-visual .pricing-hero-visual { width: min(95%, 646px); margin-right: 0; }
+  .page-header.with-visual .home-services-hero-visual,
+  .page-header.with-visual .legal-hero-visual,
+  .page-header.with-visual .dental-hero-visual,
+  .page-header.with-visual .senior-hero-visual { width: min(92%, 540px); margin-right: 0; }
   .hero-visual { justify-self: center; width: min(100%, 620px); margin-right: 0; }
   .page-header { padding: 80px 20px 50px; }
   .split { grid-template-columns: 1fr; gap: 36px; }
@@ -3110,15 +3140,20 @@ footer.site-footer {
 <!-- ====================== INDUSTRY PAGES (stubs, duplicate of industries for now) ====================== -->
 <section class="page-section" data-page="home-services">
 <main>
-<header class="page-header">
+<header class="page-header with-visual">
   <div class="page-header-bg"></div>
   <div class="hero-inner">
-    <div class="tag-pill"><div class="live-dot"></div>For Home Services</div>
-    <h1>Real shop. Real reply. <span class="accent">Real fast.</span></h1>
-    <p class="hero-sub">A homeowner with a dead AC or a flooded basement is comparing two or three shops. The one that texts back first, from a real local number, sounding like a real local foreman, wins the job. ChatSales™ is built so your shop is always that shop.</p>
-    <div class="cta-row">
-      <a href="#demo" data-route="demo" class="btn btn-primary">Book a Home Services Demo</a>
-      <a href="#how" data-route="how" class="btn btn-outline">See How It Works →</a>
+    <div class="hero-copy">
+      <div class="tag-pill"><div class="live-dot"></div>For Home Services</div>
+      <h1>Real shop. Real reply. <span class="accent">Real fast.</span></h1>
+      <p class="hero-sub">A homeowner with a dead AC or a flooded basement is comparing two or three shops. The one that texts back first, from a real local number, sounding like a real local foreman, wins the job. ChatSales™ is built so your shop is always that shop.</p>
+      <div class="cta-row">
+        <a href="#demo" data-route="demo" class="btn btn-primary">Book a Home Services Demo</a>
+        <a href="#how" data-route="how" class="btn btn-outline">See How It Works →</a>
+      </div>
+    </div>
+    <div class="hero-visual home-services-hero-visual">
+      <img src="img/home-services.png" alt="Home services technician texting beside ChatSales service van with booked job confirmation">
     </div>
   </div>
 </header>
@@ -3211,15 +3246,20 @@ footer.site-footer {
 
 <section class="page-section" data-page="legal">
 <main>
-<header class="page-header">
+<header class="page-header with-visual">
   <div class="page-header-bg"></div>
   <div class="hero-inner">
-    <div class="tag-pill"><div class="live-dot"></div>For Legal Intake</div>
-    <h1>Every fact captured. Every consent logged. <span class="accent">Every consult booked.</span></h1>
-    <p class="hero-sub">Legal intake isn't a chat, it's a paperwork-driven, time-stamped, consent-captured exchange that has to hold up if the case ever does. ChatSales™ handles the structured part automatically, so the consult call starts where it should: discussing strategy, not asking "when did this happen?"</p>
-    <div class="cta-row">
-      <a href="#demo" data-route="demo" class="btn btn-primary">Book a Legal Demo</a>
-      <a href="#how" data-route="how" class="btn btn-outline">See How It Works →</a>
+    <div class="hero-copy">
+      <div class="tag-pill"><div class="live-dot"></div>For Legal Intake</div>
+      <h1>Every fact captured. Every consent logged. <span class="accent">Every consult booked.</span></h1>
+      <p class="hero-sub">Legal intake isn't a chat, it's a paperwork-driven, time-stamped, consent-captured exchange that has to hold up if the case ever does. ChatSales™ handles the structured part automatically, so the consult call starts where it should: discussing strategy, not asking "when did this happen?"</p>
+      <div class="cta-row">
+        <a href="#demo" data-route="demo" class="btn btn-primary">Book a Legal Demo</a>
+        <a href="#how" data-route="how" class="btn btn-outline">See How It Works →</a>
+      </div>
+    </div>
+    <div class="hero-visual legal-hero-visual">
+      <img src="img/every-fact-captured.png" alt="Legal intake assistant with facts captured consent logged and consult booked documentation">
     </div>
   </div>
 </header>
@@ -3307,15 +3347,20 @@ footer.site-footer {
 
 <section class="page-section" data-page="dental">
 <main>
-<header class="page-header">
+<header class="page-header with-visual">
   <div class="page-header-bg"></div>
   <div class="hero-inner">
-    <div class="tag-pill"><div class="live-dot"></div>For Dental Practices</div>
-    <h1>HIPAA-compliant. US-based. <span class="accent">Built for the practice that can't afford a compliance slip.</span></h1>
-    <p class="hero-sub">ChatSales™ runs on US infrastructure with BAA paperwork ready on day one and conversation guardrails tuned to ADA, HIPAA and state dental board rules. Patient inquiries get a fast, calm first reply, without the regulatory exposure of offshore chatbots or generic SaaS tools.</p>
-    <div class="cta-row">
-      <a href="#demo" data-route="demo" class="btn btn-primary">Book a Dental Demo</a>
-      <a href="#how" data-route="how" class="btn btn-outline">See How It Works →</a>
+    <div class="hero-copy">
+      <div class="tag-pill"><div class="live-dot"></div>For Dental Practices</div>
+      <h1>HIPAA-compliant. US-based. <span class="accent">Built for the practice that can't afford a compliance slip.</span></h1>
+      <p class="hero-sub">ChatSales™ runs on US infrastructure with BAA paperwork ready on day one and conversation guardrails tuned to ADA, HIPAA and state dental board rules. Patient inquiries get a fast, calm first reply, without the regulatory exposure of offshore chatbots or generic SaaS tools.</p>
+      <div class="cta-row">
+        <a href="#demo" data-route="demo" class="btn btn-primary">Book a Dental Demo</a>
+        <a href="#how" data-route="how" class="btn btn-outline">See How It Works →</a>
+      </div>
+    </div>
+    <div class="hero-visual dental-hero-visual">
+      <img src="img/dental.png" alt="Dental practice intake assistant with patient fact capture consent compliance and consult booked">
     </div>
   </div>
 </header>
@@ -3404,15 +3449,20 @@ footer.site-footer {
 
 <section class="page-section" data-page="senior">
 <main>
-<header class="page-header">
+<header class="page-header with-visual">
   <div class="page-header-bg"></div>
   <div class="hero-inner">
-    <div class="tag-pill"><div class="live-dot"></div>For Senior Living &amp; Senior Services</div>
-    <h1>Help the family choose with <span class="accent">clarity, comfort and confidence.</span></h1>
-    <p class="hero-sub">The person reaching out to your community isn't usually the senior. It's their adult child, often 40 to 65, working full time, coordinating with siblings, doing the research at 10pm on their phone after a fall or a hospital scare. They don't need a sales pitch. They need a first reply that helps them feel like they're doing right by their parent.</p>
-    <div class="cta-row">
-      <a href="#demo" data-route="demo" class="btn btn-primary">Book a Senior Living Demo</a>
-      <a href="#how" data-route="how" class="btn btn-outline">See How It Works →</a>
+    <div class="hero-copy">
+      <div class="tag-pill"><div class="live-dot"></div>For Senior Living &amp; Senior Services</div>
+      <h1>Help the family choose with <span class="accent">clarity, comfort and confidence.</span></h1>
+      <p class="hero-sub">The person reaching out to your community isn't usually the senior. It's their adult child, often 40 to 65, working full time, coordinating with siblings, doing the research at 10pm on their phone after a fall or a hospital scare. They don't need a sales pitch. They need a first reply that helps them feel like they're doing right by their parent.</p>
+      <div class="cta-row">
+        <a href="#demo" data-route="demo" class="btn btn-primary">Book a Senior Living Demo</a>
+        <a href="#how" data-route="how" class="btn btn-outline">See How It Works →</a>
+      </div>
+    </div>
+    <div class="hero-visual senior-hero-visual">
+      <img src="img/senior.png" alt="Senior living match dashboard helping families compare care needs and book a tour">
     </div>
   </div>
 </header>
