@@ -301,6 +301,15 @@ section.tight { padding: 60px 32px; }
   align-items: center;
   gap: clamp(30px, 5vw, 70px);
 }
+.page-header.with-visual {
+  background-image: none;
+}
+.page-header.with-visual .hero-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(340px, 1.05fr);
+  align-items: center;
+  gap: clamp(30px, 5vw, 70px);
+}
 .hero-copy { min-width: 0; }
 .hero-visual {
   justify-self: end;
@@ -1806,6 +1815,16 @@ footer.site-footer {
 .tool-banner.reply-time-banner {
   background-image: url('img/reply-time-stacks-up.png');
 }
+.tool-banner.reply-time-banner .tool-eyebrow,
+.tool-banner.reply-time-banner .tool-heading {
+  color: var(--ink);
+}
+.tool-banner.reply-time-banner .tool-heading .accent {
+  color: #2b2b2b;
+}
+.tool-banner.reply-time-banner .tool-sub {
+  color: rgba(26, 26, 26, 0.72);
+}
 .tool-banner .tool-eyebrow {
   color: var(--green-soft);
   margin-bottom: 14px;
@@ -2397,6 +2416,7 @@ footer.site-footer {
   }
   .hero { padding: 80px 20px 60px; }
   .hero .hero-inner { grid-template-columns: 1fr; gap: 34px; }
+  .page-header.with-visual .hero-inner { grid-template-columns: 1fr; gap: 34px; }
   .hero-visual { justify-self: center; width: min(100%, 620px); margin-right: 0; }
   .page-header { padding: 80px 20px 50px; }
   .split { grid-template-columns: 1fr; gap: 36px; }
@@ -2821,12 +2841,17 @@ footer.site-footer {
 <!-- ====================== HOW IT WORKS ====================== -->
 <section class="page-section" data-page="how">
 <main>
-<header class="page-header">
+<header class="page-header with-visual">
   <div class="page-header-bg"></div>
   <div class="hero-inner">
-    <div class="tag-pill"><div class="live-dot"></div>The process, end to end</div>
-    <h1>From new lead to <span class="accent">booked appointment in under 5 minutes.</span></h1>
-    <p class="hero-sub">A repeatable six-step pipeline that fires the moment an inquiry lands. The lead gets a fast, human-feeling first response. Your team gets a scored, summarized opportunity ready to act on.</p>
+    <div class="hero-copy">
+      <div class="tag-pill"><div class="live-dot"></div>The process, end to end</div>
+      <h1>From new lead to <span class="accent">booked appointment in under 5 minutes.</span></h1>
+      <p class="hero-sub">A repeatable six-step pipeline that fires the moment an inquiry lands. The lead gets a fast, human-feeling first response. Your team gets a scored, summarized opportunity ready to act on.</p>
+    </div>
+    <div class="hero-visual">
+      <img src="img/see-how-it-works.png" alt="Three-step ChatSales workflow from captured lead to AI qualification to booked appointment">
+    </div>
   </div>
 </header>
 
