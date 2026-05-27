@@ -311,6 +311,7 @@ section.tight { padding: 60px 32px; }
   gap: clamp(30px, 5vw, 70px);
 }
 .page-header.with-visual .how-hero-visual,
+.page-header.with-visual .industries-hero-visual,
 .page-header.with-visual .demo-hero-visual {
   width: min(58vw, 700px);
   margin-right: clamp(-96px, -5vw, -56px);
@@ -2419,6 +2420,7 @@ footer.site-footer {
   }
   .page-header.with-visual .hero-inner { grid-template-columns: 1fr; gap: 34px; }
   .page-header.with-visual .how-hero-visual,
+  .page-header.with-visual .industries-hero-visual,
   .page-header.with-visual .demo-hero-visual {
     justify-self: center;
     width: min(100%, 720px);
@@ -2448,6 +2450,7 @@ footer.site-footer {
   .hero .hero-inner { grid-template-columns: 1fr; gap: 34px; }
   .page-header.with-visual .hero-inner { grid-template-columns: 1fr; gap: 34px; }
   .page-header.with-visual .how-hero-visual,
+  .page-header.with-visual .industries-hero-visual,
   .page-header.with-visual .demo-hero-visual { width: min(100%, 680px); margin-right: 0; }
   .page-header.with-visual .pricing-hero-visual { width: min(95%, 646px); margin-right: 0; }
   .hero-visual { justify-self: center; width: min(100%, 620px); margin-right: 0; }
@@ -3041,12 +3044,17 @@ footer.site-footer {
 <!-- ====================== INDUSTRIES INDEX ====================== -->
 <section class="page-section" data-page="industries">
 <main>
-<header class="page-header">
+<header class="page-header with-visual">
   <div class="page-header-bg"></div>
   <div class="hero-inner">
-    <div class="tag-pill"><div class="live-dot"></div>Industries we serve</div>
-    <h1>Four industries. <span class="accent">One proven way to win more jobs.</span></h1>
-    <p class="hero-sub">ChatSales™ works best where the job is worth real money, the customer is shopping more than one place and the shop that texts back first usually wins the work.</p>
+    <div class="hero-copy">
+      <div class="tag-pill"><div class="live-dot"></div>Industries we serve</div>
+      <h1>Four industries. <span class="accent">One proven way to win more jobs.</span></h1>
+      <p class="hero-sub">ChatSales™ works best where the job is worth real money, the customer is shopping more than one place and the shop that texts back first usually wins the work.</p>
+    </div>
+    <div class="hero-visual industries-hero-visual">
+      <img src="img/four-industries.png" alt="ChatSales workflow connecting home services, legal intake, dental and senior living to win more jobs">
+    </div>
   </div>
 </header>
 
